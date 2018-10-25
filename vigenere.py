@@ -52,7 +52,7 @@ def cifraVigenere(archEnt,clave,archSal):
 			fichero.close()
 			print "\n*********************************************************************"
 			print "  SE GENERO EL ARCHIVO ", n," CON EL MENSAJE CIFRADO"
-			print "*********************************************************************\n\n\n"
+			print "*********************************************************************\n\n"
 
 #-------------------------------------------------
 def descVigenere(archEnt,clave,archSal):

@@ -9,7 +9,7 @@ from time import time
 
 def validacionCesar(argumentos):
 	texto = ""
-	if(len(argumentos)!=6):
+	if(len(argumentos)!=5):
 		print "\nEl numero de parametros es incorrecto"
 		print "Revisar la ayuda del algoritmo de cesar: python principal.py -sc\n"
 	else:
@@ -24,7 +24,7 @@ def validacionCesar(argumentos):
 				clave = cesar.obtenerEntero(argumentos[4])
 				if(clave != -1):
 					start_time = time()
-					cesar.cifrarCesar(texto, clave, argumentos[5])
+					cesar.cifrarCesar(texto, clave, argumentos[3]+".cif")
 					elapsed_time = time() - start_time
 					print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
 		elif(argumentos[2]=="-d"):
@@ -36,9 +36,10 @@ def validacionCesar(argumentos):
 					texto=texto+pal
 				f.close()
 				clave = cesar.obtenerEntero(argumentos[4])
+				nomArchivoDec = argumentos[3].replace('.cif', '.dec')
 				if(clave != -1):
 					start_time = time()
-					cesar.descifrarCesar(texto, clave, argumentos[5])
+					cesar.descifrarCesar(texto, clave, nomArchivoDec)
 					elapsed_time = time() - start_time
 					print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
 		else: 
@@ -47,7 +48,7 @@ def validacionCesar(argumentos):
 
 def validacionAfin(argumentos):
 	texto = ""
-	if(len(argumentos)!=7):
+	if(len(argumentos)!=6):
 		print "\nEl numero de parametros es incorrecto"
 		print "Revisar la ayuda del algoritmo de afin: python principal.py -sa\n"
 	else:
@@ -68,7 +69,7 @@ def validacionAfin(argumentos):
 						b = afin.obtenerB(argumentos[5])
 						if(b != -1):
 							start_time = time()
-							afin.cifrarAfin(texto, a, b, argumentos[6])
+							afin.cifrarAfin(texto, a, b, argumentos[3]+".cif")
 							elapsed_time = time() - start_time
 							print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
 		elif(argumentos[2]=="-d"):
@@ -86,9 +87,10 @@ def validacionAfin(argumentos):
 						print 'El numero debe ser primo con el tamano del alfabeto' 					
 					else:					
 						b = afin.obtenerB(argumentos[5])
+						nomArchivoDec = argumentos[3].replace('.cif', '.dec')
 						if(b != -1):
 							start_time = time()
-							afin.descifrarAfin(texto, a, b, argumentos[6])
+							afin.descifrarAfin(texto, a, b, nomArchivoDec)
 							elapsed_time = time() - start_time
 							print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
 		else: 
@@ -96,16 +98,21 @@ def validacionAfin(argumentos):
 			print "Revisar la ayuda del algoritmo de afin: python principal.py -sa\n"
 
 def validacionVigenere(argumentos):
-	if(len(argumentos)!=6):
+	if(len(argumentos)!=5):
 		print "\nEl numero de parametros es incorrecto"
 		print "Revisar la ayuda del algoritmo de vigenere: python principal.py -sva\n"
 	else:
 		if(argumentos[2]=="-c"):
-			#print "cifrar"
-			vigenere.cifraVigenere(argumentos[3],argumentos[4],argumentos[5])
+			start_time = time()
+			vigenere.cifraVigenere(argumentos[3],argumentos[4],argumentos[3]+".cif")
+			elapsed_time = time() - start_time
+			print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
 		elif(argumentos[2]=="-d"):
-			#print "descifrar"
-			vigenere.descVigenere(argumentos[3],argumentos[4],argumentos[5])
+			nomArchivoDec = argumentos[3].replace('.cif', '.dec')
+			start_time = time()
+			vigenere.descVigenere(argumentos[3],argumentos[4],nomArchivoDec)
+			elapsed_time = time() - start_time
+			print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
 		else: 
 			print "\nEl modo ",argumentos[2]," es incorrecto"
 			print "Revisar la ayuda del algoritmo de vigenere: python principal.py -sva\n"

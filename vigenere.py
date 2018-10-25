@@ -45,7 +45,7 @@ def cifraVigenere(archEnt,clave,archSal):
 						c=c+dato
 				else:
 					if((palabra[i]=='\xc3' or palabra[i]=='\xc2') and (palabra[j-lk]=='\xc3' or palabra[j-lk]=='\xc2')):
-						print palabra[i],palabra[i+1],palabra[i]+palabra[i+1],palabra[j-lk]
+						#print palabra[i],palabra[i+1],palabra[i]+palabra[i+1],palabra[j-lk]
 						dato= alf[((alf.index(palabra[i]+palabra[i+1])+alf.index(palabra[j-lk]+palabra[j-lk+1]))%la)]
 						i=i+1
 						j=j+1

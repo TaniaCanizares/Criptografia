@@ -9,13 +9,18 @@ abc = alfabeto.getAlfabeto()
 	
 def cifrarCesar(texto, clave, nombreArchivoSalida):
 	mensajeCifrado = ""
-	for caracter in texto: 
-		mi = alfabeto.getPosicion(caracter)
-		if (mi!=-1):
-			modulo = (mi+clave)%TAM_ALFABETO
-			mensajeCifrado = mensajeCifrado + abc[modulo]
+	i = 0
+	print texto
+	while (i < len(texto)):
+		if texto[i] == '\xc3' or texto[i] == '\xc2':
+			caracter = texto[i] + texto[i + 1]
+			i+=1
+			mi = alfabeto.getPosicion(caracter)
 		else:
-			continue
+			mi = alfabeto.getPosicion(texto[i])
+		modulo = (mi+clave)%TAM_ALFABETO
+		mensajeCifrado = mensajeCifrado + abc[modulo]
+		i+=1			
 	f = archivo.escribirArchivo(nombreArchivoSalida, mensajeCifrado)
 	if f =='':
 		print 'Ocurrio un error al intentar escribir en', nombreArchivoSalida
@@ -27,13 +32,17 @@ def cifrarCesar(texto, clave, nombreArchivoSalida):
 
 def descifrarCesar(criptograma, clave, nombreArchivoSalida):
 	mensajeClaro = ""
-	for caracter in criptograma:
-		ci = alfabeto.getPosicion(caracter)
-		if (ci!=-1):
-			modulo = (ci-clave)%TAM_ALFABETO
-			mensajeClaro = mensajeClaro + abc[modulo]
+	i = 0
+	while (i < len(criptograma)):
+		if criptograma[i] == '\xc3' or criptograma[i] == '\xc2':
+			caracter = criptograma[i] + criptograma[i + 1]
+			i+=1
+			ci = alfabeto.getPosicion(caracter)
 		else:
-			continue
+			ci = alfabeto.getPosicion(criptograma[i])
+		modulo = (ci-clave)%TAM_ALFABETO
+		mensajeClaro = mensajeClaro + abc[modulo]
+		i+=1
 	f = archivo.escribirArchivo(nombreArchivoSalida, mensajeClaro)
 	if f=='':
 		print 'Ocurrio un error al intentar escribir en', nombreArchivoSalida

@@ -20,18 +20,7 @@ def tamAlfabeto():
 	return len(Alfabeto)
 
 def getPosicion(letra):
-	try:
-		if(letra!='\xc3'):
-			return Alfabeto.index(letra)
-		else: 
-			if letra.islower():
-				return 14
-			else:
-				return 41
-	except ValueError:
-		return -1
-	else:
-		return Alfabeto.index(letra)
+	return Alfabeto.index(letra)
 	
 	
 

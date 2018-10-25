@@ -8,13 +8,17 @@ abc = alfabeto.getAlfabeto()
 
 def cifrarAfin(texto, a, b, nombreArchivoSalida):
 	mensajeCifrado = ""
-	for caracter in texto: 
-		mi = alfabeto.getPosicion(caracter)
-		if (mi!=-1):
-			modulo = (a*mi+b)%TAM_ALFABETO
-			mensajeCifrado = mensajeCifrado + abc[modulo]
+	i = 0
+	while (i < len(texto)):
+		if texto[i] == '\xc3' or texto[i] == '\xc2':
+			caracter = texto[i] + texto[i + 1]
+			i+=1
+			mi = alfabeto.getPosicion(caracter)
 		else:
-			continue
+			mi = alfabeto.getPosicion(texto[i])
+		modulo = (a*mi+b)%TAM_ALFABETO
+		mensajeCifrado = mensajeCifrado + abc[modulo]
+		i+=1
 	f = archivo.escribirArchivo(nombreArchivoSalida, mensajeCifrado)
 	if f=='':
 		print 'Ocurrio un error al intentar escribir en', nombreArchivoSalida
@@ -27,11 +31,17 @@ def cifrarAfin(texto, a, b, nombreArchivoSalida):
 def descifrarAfin(texto, a, b, nombreArchivoSalida):
 	d,x,y = extMcd(a, TAM_ALFABETO)
 	mensajeClaro = ""
-	for caracter in texto:
-		ci = alfabeto.getPosicion(caracter)
-		if (ci!=-1):
-			modulo = (x*(ci-b))%TAM_ALFABETO
-			mensajeClaro = mensajeClaro + abc[modulo]
+	i = 0
+	while (i < len(texto)):
+		if texto[i] == '\xc3' or texto[i] == '\xc2':
+			caracter = texto[i] + texto[i + 1]
+			i+=1
+			ci = alfabeto.getPosicion(caracter)
+		else:
+			ci = alfabeto.getPosicion(texto[i])
+		modulo = (x*(ci-b))%TAM_ALFABETO
+		mensajeClaro = mensajeClaro + abc[modulo]
+		i+=1
 	f = archivo.escribirArchivo(nombreArchivoSalida, mensajeClaro)
 	if f=='':
 		print 'Ocurrio un error al intentar escribir en', nombreArchivoSalida

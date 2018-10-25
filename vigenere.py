@@ -7,14 +7,21 @@ import alfabeto
 def cifraVigenere(archEnt,clave,archSal): 
 	doc=archEnt
 	palabra=""
+	k=""
 	f = archivo.abrirArchivo(doc)
-	if f=='':
-		print 'No se encontro el archivo '+doc
+	h = archivo.abrirArchivo(clave)
+	if f=='' or h=='':
+		if(f==''):
+			print 'No se encontro el archivo '+doc
+		else: 
+			print 'No se encontro el archivo '+clave
 	else:
 		for pal in f.readlines():
 			palabra=palabra+pal
 		f.close()
-		k=clave
+		for cla in h.readlines():
+			k=k+cla
+		h.close()
 		lk=len(k)
 		i=0
 		j=0
@@ -85,15 +92,22 @@ def cifraVigenere(archEnt,clave,archSal):
 def descVigenere(archEnt,clave,archSal):
 	doc=archEnt
 	palabra=""
+	k=""
 	f = archivo.abrirArchivo(doc)
-	if f == '':
-		print 'No se encontro el archivo '+doc
+	h = archivo.abrirArchivo(clave)
+	if f=='' or h=='':
+		if(f==''):
+			print 'No se encontro el archivo '+doc
+		else: 
+			print 'No se encontro el archivo '+clave
 	else:
 		for pal in f.readlines():
 			palabra=palabra+pal
 		f.close()
 		lg=len(palabra)
-		k=clave
+		for cla in h.readlines():
+			k=k+cla
+		h.close()
 		lk=len(k)
 		i=0
 		j=0

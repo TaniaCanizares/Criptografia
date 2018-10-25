@@ -36,4 +36,4 @@ def getPosicion(letra):
 	
 
 #print Alfabeto.index('Ñ')
-imprimir()
+#imprimir()

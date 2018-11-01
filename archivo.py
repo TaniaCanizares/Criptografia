@@ -6,6 +6,15 @@ def escribirArchivo(nombreArchivo, texto):
 	else:
 		archivo.write(texto)
 		return archivo
+
+def escribirAlfabeto(nombreArchivo, texto):
+	try:
+		archivo = open(nombreArchivo,"a")
+	except IOError:
+		return ''
+	else:
+		archivo.write(texto)
+		return archivo
 	
 def abrirArchivo(nombreArchivo):
 	try:

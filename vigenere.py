@@ -30,54 +30,54 @@ def cifraVigenere(archEnt,clave,archSal):
 		alf=alfabeto.getAlfabeto()
 		la=alfabeto.tamAlfabeto()
 		#imprimirTexto(palabra)
-		try:
-			while(i<lg):	
-				if(j<lk):
-					if(palabra[i]=='\xc3' and k[i]=='\xc3'):
-						##print i
-						dato= alf[((alf.index(palabra[i]+palabra[i+1])+alf.index(k[j]+k[j+1]))%la)]
-						i=i+1
-						j=j+1
-						c=c+dato
-					elif(palabra[i]=='\xc3' or palabra[i]=='\xc2'): 
-						dato= alf[((alf.index(palabra[i]+palabra[i+1])+alf.index(k[j]))%la)]
-						i=i+1
-						c=c+dato
-					elif(k[j]=='\xc3' or k[j]=='\xc2'):
-						dato= alf[((alf.index(palabra[i])+alf.index(k[j]+k[j+1]))%la)]
-						j=j+1
-						c=c+dato
-					else:
-						dato= alf[((alf.index(palabra[i])+alf.index(k[j]))%la)]
-						c=c+dato
+		#try:
+		while(i<lg):	
+			if(j<lk):
+				if(palabra[i]=='\xc3' and k[i]=='\xc3'):
+					##print i
+					dato= alf[((alf.index(palabra[i]+palabra[i+1])+alf.index(k[j]+k[j+1]))%la)]
+					i=i+1
+					j=j+1
+					c=c+dato
+				elif(palabra[i]=='\xc3' or palabra[i]=='\xc2'): 
+					dato= alf[((alf.index(palabra[i]+palabra[i+1])+alf.index(k[j]))%la)]
+					i=i+1
+					c=c+dato
+				elif(k[j]=='\xc3' or k[j]=='\xc2'):
+					dato= alf[((alf.index(palabra[i])+alf.index(k[j]+k[j+1]))%la)]
+					j=j+1
+					c=c+dato
 				else:
-					if((palabra[i]=='\xc3' or palabra[i]=='\xc2') and (palabra[j-lk]=='\xc3' or palabra[j-lk]=='\xc2')):
-						#print palabra[i],palabra[i+1],palabra[i]+palabra[i+1],palabra[j-lk]
-						dato= alf[((alf.index(palabra[i]+palabra[i+1])+alf.index(palabra[j-lk]+palabra[j-lk+1]))%la)]
-						i=i+1
-						j=j+1
-						c=c+dato
-					elif(palabra[i]=='\xc3' or palabra[i]=='\xc2'):
-						#print palabra[i],palabra[i+1],palabra[i]+palabra[i+1],palabra[j-lk]
-						dato=alf[((alf.index(palabra[i]+palabra[i+1])+alf.index(palabra[j-lk]))%la)]
-						i=i+1
-						c=c+dato
-					elif(palabra[j-lk]=='\xc3' or palabra[j-lk]=='\xc2'):
-						#print palabra[j-lk],palabra[j-lk+1],palabra[j-lk]+palabra[j-lk+1]
-						dato= alf[((alf.index(palabra[i])+alf.index(palabra[j-lk]+palabra[j-lk+1]))%la)]
-						j=j+1
-						c=c+dato
-					else:
-						dato=alf[((alf.index(palabra[i])+alf.index(palabra[j-lk]))%la)]
-						c=c+dato
-				i=i+1
-				j=j+1
-		except ValueError:
+					dato= alf[((alf.index(palabra[i])+alf.index(k[j]))%la)]
+					c=c+dato
+			else:
+				if((palabra[i]=='\xc3' or palabra[i]=='\xc2') and (palabra[j-lk]=='\xc3' or palabra[j-lk]=='\xc2')):
+					#print palabra[i],palabra[i+1],palabra[i]+palabra[i+1],palabra[j-lk]
+					dato= alf[((alf.index(palabra[i]+palabra[i+1])+alf.index(palabra[j-lk]+palabra[j-lk+1]))%la)]
+					i=i+1
+					j=j+1
+					c=c+dato
+				elif(palabra[i]=='\xc3' or palabra[i]=='\xc2'):
+					#print palabra[i],palabra[i+1],palabra[i]+palabra[i+1],palabra[j-lk]
+					dato=alf[((alf.index(palabra[i]+palabra[i+1])+alf.index(palabra[j-lk]))%la)]
+					i=i+1
+					c=c+dato
+				elif(palabra[j-lk]=='\xc3' or palabra[j-lk]=='\xc2'):
+					#print palabra[j-lk],palabra[j-lk+1],palabra[j-lk]+palabra[j-lk+1]
+					dato= alf[((alf.index(palabra[i])+alf.index(palabra[j-lk]+palabra[j-lk+1]))%la)]
+					j=j+1
+					c=c+dato
+				else:
+					dato=alf[((alf.index(palabra[i])+alf.index(palabra[j-lk]))%la)]
+					c=c+dato
+			i=i+1
+			j=j+1
+		"""except ValueError:
 			print "El simbolo '",palabra[i],"'-'",palabra[i+1],"'=",palabra[i]+palabra[i+1],"no se encuentra en el alfabeto"
 			print "Si desea agregar el simbolo consulte la ayuda"
 			if(palabra[i]=="\xc3"):
 				print palabra[i]
-			sys.exit()
+			sys.exit()"""
 		n = archSal
 		fichero = archivo.escribirArchivo(n, c)
 		if fichero=='':

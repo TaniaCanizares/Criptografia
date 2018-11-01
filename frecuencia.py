@@ -3,31 +3,100 @@
 import os, sys
 import archivo
 import alfabeto
+import operator
 
 TAM_ALFABETO = alfabeto.tamAlfabeto()
 abc = alfabeto.getAlfabeto()
+frecuAlta = ['E','A','S','O', 'I', 'N', 'R', 'D', 'T']
+
+	
+def analisisFrecuencia(criptograma):
+	sys.stdin.flush()
+	listaFrecu = frecuencias(criptograma)
+	print listaFrecu
+	k = verificarHipostesis(listaFrecu)
+	mensajeClaro = ""
+	print 'La clave k es: ', k
+	i=0
+	while (i < len(criptograma)):
+		if criptograma[i] == '\xc3' or criptograma[i] == '\xc2':
+			caracter = criptograma[i] + criptograma[i + 1]
+			i+=1
+			ci = alfabeto.getPosicion(caracter)
+		else:
+			ci = alfabeto.getPosicion(criptograma[i])
+		modulo = (ci-k)%TAM_ALFABETO
+		mensajeClaro = mensajeClaro + abc[modulo]
+		i+=1
+	print mensajeClaro
+		
+		
+def verificarHipostesis(listaFrecu):
+	K = 0
+	k1 = 0
+	k2 = 0
+	for i in frecuAlta:
+		for j in frecuAlta:
+			if (i!=j):
+				print 'Hipotesis: '
+				print listaFrecu[0][0],'-> ', i
+				print listaFrecu[1][0],'-> ', j
+				k1 = encontrarK(i, listaFrecu[0][0])
+				print k1
+				k2 = encontrarK(j, listaFrecu[1][0])
+				print k2
+				if(k1==k2):
+					return k1
+					break
+				else:
+					print 'Hipotesis: '
+					print listaFrecu[0][0],'-> ', j
+					print listaFrecu[1][0],'-> ', i
+					k1 = encontrarK(j, listaFrecu[0][0])
+					print k1
+					k2 = encontrarK(i, listaFrecu[1][0])
+					print k2
+					if(k1==k2):
+						return k1
+						break
+
+
+def encontrarK(letraMi, letraCi):
+	mi = alfabeto.getPosicion(letraMi)
+	ci = alfabeto.getPosicion(letraCi)
+	print '(', mi, '+ k)mod',TAM_ALFABETO,' = ', ci
+	return (ci-mi)%TAM_ALFABETO
 
 def contar(letra, texto):
 	contador = 0
-    for caracter in texto:
-        if caracter == letra:
-            contador = contador + 1
-    return contador
-
-
-
-def guardarFrecuencias(texto):
 	i = 0
-	listaFrecuencias = []
-	while (i< len(abc)):
-		n = contar(abc[i],texto)
-		if (n == 0):
+	while (i < len(texto)):
+		if texto[i] == '\xc3' or texto[i] == '\xc2':
+			caracter = texto[i] + texto[i + 1]
 			i+=1
-		listaFrecuencias.append(contar(abc[i],texto))
+		else:
+			caracter = texto[i]
+		if caracter == letra:
+				contador = contador + 1
+		i+=1
+	return contador
+
+def frecuencias(texto):
+	sys.stdin.flush()
+	listaFrecuencias = {}
+	i = 0
+	while (i < len(abc)):
+		n = contar(abc[i],texto)
+		if (n != 0):
+			#print abc[i],'->',n
+			listaFrecuencias[abc[i]] = n
+		i+=1
+	resultado =  sorted(listaFrecuencias, key=listaFrecuencias.get, reverse=True)
+	return resultado	
 	
-	for elemento in listaFrecuencias:
-		print elemento
 		
-guardarFrecuencias('LAVIDAESUNSUEÑOYLOSSUEÑOSSUEÑOSSON')
+	
+		
+analisisFrecuencia('')
 		
 

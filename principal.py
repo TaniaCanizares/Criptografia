@@ -18,6 +18,8 @@ elif(numArg==2):
 		ayuda.ayudaAfin()
 	elif(arg[1]=="-sva"):
 		ayuda.ayudaVigenere()
+	elif(arg[1]=="-caf"):
+		ayuda.ayudaFrecuencia()
 	else:
 		print "EL ALGORIMO QUE DIGITO NO ES UNA OPCION VALIDA"
 else:	
@@ -47,6 +49,8 @@ else:
 		validaciones.validacionAfin(arg)
 	elif(arg[1]=="-sva"):
 		validaciones.validacionVigenere(arg)
+	elif(arg[1]=="-caf"):
+		validaciones.validacionFrecuencia(arg)
 	else:
 		print "EL COMANDO QUE DIGITO NO ES UNA OPCION VALIDA"
 

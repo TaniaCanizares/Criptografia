@@ -5,6 +5,7 @@ import vigenere
 import archivo
 import cesar
 import afin
+import frecuencia
 from time import time
 
 def validacionCesar(argumentos):
@@ -97,22 +98,21 @@ def validacionAfin(argumentos):
 			print "\nEl modo ",argumentos[2]," es incorrecto"
 			print "Revisar la ayuda del algoritmo de afin: python principal.py -sa\n"
 
-def validacionVigenere(argumentos):
-	if(len(argumentos)!=5):
+def validacionFrecuencia(argumentos):
+	if(len(argumentos)!=3):
 		print "\nEl numero de parametros es incorrecto"
-		print "Revisar la ayuda del algoritmo de vigenere: python principal.py -sva\n"
+		print "Revisar la ayuda del algoritmo de criptoanalisis por frecuencia: python principal.py -caf\n"
 	else:
-		if(argumentos[2]=="-c"):
+		f = archivo.abrirArchivo(argumentos[2])
+		if f=='':
+			print 'No se encontro el archivo '+argumentos[2]
+		else:
+			texto = ""
+			nomArchivoDec = argumentos[2].replace('.cif', '.dec')
+			for pal in f.readlines():
+				texto=texto+pal
+			f.close()
 			start_time = time()
-			vigenere.cifraVigenere(argumentos[3],argumentos[4],argumentos[3]+".cif")
+			frecuencia.analisisFrecuencia(texto, nomArchivoDec)
 			elapsed_time = time() - start_time
 			print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
-		elif(argumentos[2]=="-d"):
-			nomArchivoDec = argumentos[3].replace('.cif', '.dec')
-			start_time = time()
-			vigenere.descVigenere(argumentos[3],argumentos[4],nomArchivoDec)
-			elapsed_time = time() - start_time
-			print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
-		else: 
-			print "\nEl modo ",argumentos[2]," es incorrecto"
-			print "Revisar la ayuda del algoritmo de vigenere: python principal.py -sva\n"

@@ -10,13 +10,11 @@ abc = alfabeto.getAlfabeto()
 frecuAlta = ['E','A','S','O', 'I', 'N', 'R', 'D', 'T']
 
 	
-def analisisFrecuencia(criptograma):
+def analisisFrecuencia(criptograma, nomArchivoSalida):
 	sys.stdin.flush()
 	listaFrecu = frecuencias(criptograma)
-	print listaFrecu
 	k = verificarHipostesis(listaFrecu)
 	mensajeClaro = ""
-	print 'La clave k es: ', k
 	i=0
 	while (i < len(criptograma)):
 		if criptograma[i] == '\xc3' or criptograma[i] == '\xc2':
@@ -28,7 +26,13 @@ def analisisFrecuencia(criptograma):
 		modulo = (ci-k)%TAM_ALFABETO
 		mensajeClaro = mensajeClaro + abc[modulo]
 		i+=1
-	print mensajeClaro
+	f = archivo.escribirArchivo(nomArchivoSalida, mensajeClaro)
+	if f=='':
+		print 'Ocurrio un error al intentar escribir en', nomArchivoSalida
+	else:
+		print 'El mensaje descifrado se guardo correctamente en',nomArchivoSalida
+		f.close()
+	#print mensajeClaro
 		
 		
 def verificarHipostesis(listaFrecu):
@@ -38,24 +42,14 @@ def verificarHipostesis(listaFrecu):
 	for i in frecuAlta:
 		for j in frecuAlta:
 			if (i!=j):
-				print 'Hipotesis: '
-				print listaFrecu[0][0],'-> ', i
-				print listaFrecu[1][0],'-> ', j
 				k1 = encontrarK(i, listaFrecu[0][0])
-				print k1
 				k2 = encontrarK(j, listaFrecu[1][0])
-				print k2
 				if(k1==k2):
 					return k1
 					break
 				else:
-					print 'Hipotesis: '
-					print listaFrecu[0][0],'-> ', j
-					print listaFrecu[1][0],'-> ', i
 					k1 = encontrarK(j, listaFrecu[0][0])
-					print k1
 					k2 = encontrarK(i, listaFrecu[1][0])
-					print k2
 					if(k1==k2):
 						return k1
 						break
@@ -64,7 +58,6 @@ def verificarHipostesis(listaFrecu):
 def encontrarK(letraMi, letraCi):
 	mi = alfabeto.getPosicion(letraMi)
 	ci = alfabeto.getPosicion(letraCi)
-	print '(', mi, '+ k)mod',TAM_ALFABETO,' = ', ci
 	return (ci-mi)%TAM_ALFABETO
 
 def contar(letra, texto):
@@ -82,21 +75,13 @@ def contar(letra, texto):
 	return contador
 
 def frecuencias(texto):
-	sys.stdin.flush()
 	listaFrecuencias = {}
 	i = 0
 	while (i < len(abc)):
 		n = contar(abc[i],texto)
 		if (n != 0):
-			#print abc[i],'->',n
 			listaFrecuencias[abc[i]] = n
 		i+=1
 	resultado =  sorted(listaFrecuencias, key=listaFrecuencias.get, reverse=True)
 	return resultado	
-	
-		
-	
-		
-analisisFrecuencia('')
-		
 

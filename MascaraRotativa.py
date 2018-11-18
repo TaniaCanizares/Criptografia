@@ -19,17 +19,15 @@ def imprimir(matriz,n):
 		j=0
 		i=i+1
 
-def verificarMascara(m,m2,m3,m4,x,tipo):
+def verificarMascara(m,m2,m3,m4):
 	i=0
 	numX=0
 	while(i<len(m)):
 		j=0
-		#print "i: ",i
 		while(j<len(m)):
 			rep=0
 			if(m[i][j].upper()=="X"):
 				rep=rep+1
-				numX=numX+1
 			if(m2[i][j].upper()=="X"):
 				rep=rep+1
 			if(m3[i][j].upper()=="X"):
@@ -37,14 +35,11 @@ def verificarMascara(m,m2,m3,m4,x,tipo):
 			if(m4[i][j].upper()=="X"):
 				rep=rep+1
 			if(rep>1):
-				print "Hay coincidencia en ",i,",",j
+				print "Hay coincidencia en la perforacion",i,",",j," al rotarla"
 				sys.exit()
 			j=j+1
 		i=i+1
-	if(numX!=x and tipo=="c"):
-		print "El numero de perforaciones 'X' no es el correcto"
-		print "La mascara debe tener ",x," perforaciones"	
-		sys.exit()		
+			
 
 def rotar(matriz,n):
 	nueva=[]
@@ -98,12 +93,20 @@ def generarCif(matriz):
 			cif=cif+matriz[i][j]
 			j=j+1
 		i=i+1
-	return cif	
+	return cif
 
-def cifradoMR(arch):
+def llenarMacara(mascara,perf):
+	i=0
+	while(i<len(perf)-1):
+		mascara[int(perf[i+1][0])][int(perf[i+1][2])]="X"
+		i=i+1
+
+def cifradoMR(arch,masc):
 	mensaje=""
+	perforaciones=[]
 	f = archivo.abrirArchivo(arch)
-	if f=='':
+	p = archivo.abrirArchivo(masc)
+	if f=='' or p=='':
 		print 'No se encontro el archivo ',arch
 		sys.exit()
 	for pal in f.readlines():
@@ -111,11 +114,27 @@ def cifradoMR(arch):
 	f.close()
 	numC=len(mensaje)
 	n=int(math.ceil(math.sqrt(numC)))
-	n=n+1
+	for per in p.readlines():
+		perforaciones.append(per)
+	p.close()
+	if(int(perforaciones[0])<n):
+		print "El tamaño de la matriz es muy pequeño, debe tener un tamaño minimo de ",n
+		sys.exit()
+	x=int(numC/4)
+	if(x<(numC/4.0)):
+		x=x+1
+	if((len(perforaciones)-1)!=x):
+		print "El numero de perforaciones 'X' no es el correcto"
+		print "La mascara debe tener ",x," perforaciones"	
+		sys.exit()	
 	matriz=[]
+	mascara=[]
+	n=int(perforaciones[0])
 	for i in range(n):
 		matriz.append(["null"]*n)
-	mascara=[["-","-","-","x","-","-"],["x","-","-","-","-","-"],["-","-","-","-","x","-"],["-","-","x","-","-","-"],["x","-","-","-","-","-"],["-","-","-","x","-","-"]]
+		mascara.append(["-"]*n)
+	llenarMacara(mascara,perforaciones)
+	imprimir(mascara,n)
 	if(len(mascara)==n and len(mascara[i])==n):
 		mascara2=rotar(mascara,n)
 		mascara3=rotar(mascara2,n)
@@ -123,10 +142,7 @@ def cifradoMR(arch):
 	else:
 		print "La mascara debe tener tamaño ",n,"x",n
 		sys.exit()
-	x=int(numC/4)
-	if(x<(numC/4.0)):
-		x=x+1
-	verificarMascara(mascara,mascara2,mascara3,mascara4,x,"c")
+	verificarMascara(mascara,mascara2,mascara3,mascara4)
 	l=0
 	hubicarLetras(matriz,mascara,mensaje,l)
 	l=l+x
@@ -181,10 +197,12 @@ def consMensaje(matriz,mascara):
 		i=i+1
 	return men
 
-def descifradoMR(arch):
+def descifradoMR(arch,masc):
 	mensaje=""
+	perforaciones=[]
 	f = archivo.abrirArchivo(arch)
-	if f=='':
+	p = archivo.abrirArchivo(masc)
+	if f=='' or p=='':
 		print 'No se encontro el archivo ',arch
 		sys.exit()
 	for pal in f.readlines():
@@ -192,16 +210,24 @@ def descifradoMR(arch):
 	f.close()
 	numC=len(mensaje)
 	n=int(math.ceil(math.sqrt(numC)))
+	for per in p.readlines():
+		perforaciones.append(per)
+	p.close()
+	if(int(perforaciones[0])<n):
+		print "El tamaño de la matriz es muy pequeño, debe tener un tamaño minimo de ",n
+		sys.exit()
 	matriz=[]
+	mascara=[]
+	n=int(perforaciones[0])
 	for i in range(n):
 		matriz.append(["null"]*n)
+		mascara.append(["-"]*n)
 	llenarMatriz(matriz,mensaje,n)
-	#imprimir(matriz,n)
-	mascara=[["-","-","-","x","-","-"],["x","-","-","-","-","-"],["-","-","-","-","x","-"],["-","-","x","-","-","-"],["x","-","-","-","-","-"],["-","-","-","x","-","-"]]
+	llenarMacara(mascara,perforaciones)
 	mascara2=rotar(mascara,n)
 	mascara3=rotar(mascara2,n)
 	mascara4=rotar(mascara3,n)
-	verificarMascara(mascara,mascara2,mascara3,mascara4,0,"d")
+	verificarMascara(mascara,mascara2,mascara3,mascara4)
 	men=""
 	men=men+consMensaje(matriz,mascara)
 	men=men+consMensaje(matriz,mascara2)
@@ -220,8 +246,9 @@ def descifradoMR(arch):
 	print "-----------Mensaje-----------------"
 	print men
 
-mensaje="unbebetiene300huesoss"
-print "Cifrando ------------>",mensaje
-cif=cifradoMR("./textos_prueba/quijote.txt")
+
+cif=cifradoMR("./textos_prueba/menMascara.txt","./textos_prueba/mascara.txt")
+#cif=cifradoMR("./textos_prueba/quijote.txt")
 print "Descifrado ------------>",cif
-descifradoMR("./textos_prueba/quijote.txt.cif")
+descifradoMR("./textos_prueba/menMascara.txt.cif","./textos_prueba/mascara.txt")
+#descifradoMR("./textos_prueba/quijote.txt.cif")

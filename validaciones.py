@@ -6,7 +6,29 @@ import archivo
 import cesar
 import afin
 import frecuencia
+import MascaraRotativa
 from time import time
+
+
+def validacionVigenere(argumentos):
+	if(len(argumentos)!=5):
+		print "\nEl numero de parametros es incorrecto"
+		print "Revisar la ayuda del algoritmo de vigenere: python principal.py -sva\n"
+	else:
+		if(argumentos[2]=="-c"):
+			start_time = time()
+			vigenere.cifraVigenere(argumentos[3],argumentos[4],argumentos[3]+".cif")
+			elapsed_time = time() - start_time
+			print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
+		elif(argumentos[2]=="-d"):
+			sal=argumentos[3].replace("cif","dec")
+			start_time = time()
+			vigenere.descVigenere(argumentos[3],argumentos[4],sal)
+			elapsed_time = time() - start_time
+			print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
+		else: 
+			print "\nEl modo ",argumentos[2]," es incorrecto"
+			print "Revisar la ayuda del algoritmo de vigenere: python principal.py -sva\n"
 
 def validacionCesar(argumentos):
 	texto = ""
@@ -116,3 +138,22 @@ def validacionFrecuencia(argumentos):
 			frecuencia.analisisFrecuencia(texto, nomArchivoDec)
 			elapsed_time = time() - start_time
 			print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
+
+def validacionMascara(argumentos):
+	if(len(argumentos)!=5):
+		print "\nEl numero de parametros es incorrecto"
+		print "Revisar la ayuda del algoritmo de Mascara Rotativa: python principal.py -mr\n"
+	else:
+		if(argumentos[2]=="-c"):
+			start_time = time()
+			MascaraRotativa.cifradoMR(argumentos[3],argumentos[4])
+			elapsed_time = time() - start_time
+			print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
+		elif(argumentos[2]=="-d"):
+			start_time = time()
+			MascaraRotativa.descifradoMR(argumentos[3],argumentos[4])
+			elapsed_time = time() - start_time
+			print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
+		else: 
+			print "\nEl modo ",argumentos[2]," es incorrecto"
+			print "Revisar la ayuda del algoritmo de Mascara Rotativa: python principal.py -mr\n"

@@ -79,7 +79,7 @@ def completrar(matriz,mensaje,tam):
 		j=0
 		while(j<len(matriz)):
 			if(matriz[i][j]=="null"):
-				matriz[i][j]=mensaje[random.randint(0,tam)]
+				matriz[i][j]=mensaje[random.randint(0,tam-1)]
 			j=j+1
 		i=i+1	
 
@@ -134,7 +134,6 @@ def cifradoMR(arch,masc):
 		matriz.append(["null"]*n)
 		mascara.append(["-"]*n)
 	llenarMacara(mascara,perforaciones)
-	imprimir(mascara,n)
 	if(len(mascara)==n and len(mascara[i])==n):
 		mascara2=rotar(mascara,n)
 		mascara3=rotar(mascara2,n)
@@ -164,7 +163,6 @@ def cifradoMR(arch,masc):
 		print "\n*********************************************************************"
 		print "  SE GENERO EL ARCHIVO ", sal," CON EL MENSAJE CIFRADO"
 		print "*********************************************************************\n\n"
-	return cif
 
 
 ### Metodos para descifrar
@@ -243,12 +241,10 @@ def descifradoMR(arch,masc):
 		print "SE GENERO EL ARCHIVO ",sal," CON EL MENSAJE EN CLARO"
 		print "*********************************************************************\n\n\n"
 
-	print "-----------Mensaje-----------------"
-	print men
 
 
-cif=cifradoMR("./textos_prueba/menMascara.txt","./textos_prueba/mascara.txt")
+#cif=cifradoMR("./textos_prueba/menMascara.txt","./textos_prueba/mascara.txt")
 #cif=cifradoMR("./textos_prueba/quijote.txt")
-print "Descifrado ------------>",cif
-descifradoMR("./textos_prueba/menMascara.txt.cif","./textos_prueba/mascara.txt")
+#print "Descifrado ------------>",cif
+#descifradoMR("./textos_prueba/menMascara.txt.cif","./textos_prueba/mascara.txt")
 #descifradoMR("./textos_prueba/quijote.txt.cif")

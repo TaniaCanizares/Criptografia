@@ -18,6 +18,8 @@ elif(numArg==2):
 		ayuda.ayudaAfin()
 	elif(arg[1]=="-sva"):
 		ayuda.ayudaVigenere()
+	elif(arg[1]=="-mr"):
+		ayuda.ayudaMascara()
 	elif(arg[1]=="-caf"):
 		ayuda.ayudaFrecuencia()
 	else:
@@ -49,6 +51,8 @@ else:
 		validaciones.validacionAfin(arg)
 	elif(arg[1]=="-sva"):
 		validaciones.validacionVigenere(arg)
+	elif(arg[1]=="-mr"):
+		validaciones.validacionMascara(arg)
 	elif(arg[1]=="-caf"):
 		validaciones.validacionFrecuencia(arg)
 	else:

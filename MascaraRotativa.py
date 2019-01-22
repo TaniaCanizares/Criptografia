@@ -96,9 +96,10 @@ def generarCif(matriz):
 	return cif
 
 def llenarMacara(mascara,perf):
-	i=0
-	while(i<len(perf)-1):
-		mascara[int(perf[i+1][0])][int(perf[i+1][2])]="X"
+	i=1
+	while(i<len(perf)):
+		aux=perf[i].split(",")
+		mascara[int(aux[0])][int(aux[1])]="X"
 		i=i+1
 
 def cifradoMR(arch,masc):
@@ -107,7 +108,10 @@ def cifradoMR(arch,masc):
 	f = archivo.abrirArchivo(arch)
 	p = archivo.abrirArchivo(masc)
 	if f=='' or p=='':
-		print 'No se encontro el archivo ',arch
+		if f=='':
+			print 'No se encontro el archivo ',arch
+		if p=='':
+			print 'No se encontro el archivo ',masc
 		sys.exit()
 	for pal in f.readlines():
 		mensaje=mensaje+pal
@@ -142,15 +146,16 @@ def cifradoMR(arch,masc):
 		print "La mascara debe tener tamaño ",n,"x",n
 		sys.exit()
 	verificarMascara(mascara,mascara2,mascara3,mascara4)
+	numP=len(perforaciones)-1
 	l=0
 	hubicarLetras(matriz,mascara,mensaje,l)
-	l=l+x
+	l=l+numP
 	hubicarLetras(matriz,mascara2,mensaje,l)
-	l=l+x
+	l=l+numP
 	hubicarLetras(matriz,mascara3,mensaje,l)
-	l=l+x
+	l=l+numP
 	hubicarLetras(matriz,mascara4,mensaje,l)
-	l=l+x
+	l=l+numP
 	completrar(matriz,mensaje,numC)
 	cif=generarCif(matriz)
 	sal = arch+".cif"
@@ -241,10 +246,3 @@ def descifradoMR(arch,masc):
 		print "SE GENERO EL ARCHIVO ",sal," CON EL MENSAJE EN CLARO"
 		print "*********************************************************************\n\n\n"
 
-
-
-#cif=cifradoMR("./textos_prueba/menMascara.txt","./textos_prueba/mascara.txt")
-#cif=cifradoMR("./textos_prueba/quijote.txt")
-#print "Descifrado ------------>",cif
-#descifradoMR("./textos_prueba/menMascara.txt.cif","./textos_prueba/mascara.txt")
-#descifradoMR("./textos_prueba/quijote.txt.cif")

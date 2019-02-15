@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: latin-1 -*-
+# -*- coding: utf-8 -*-
 import os, sys
 
 def ayudaPrincipal():
@@ -28,9 +28,14 @@ def ayudaPrincipal():
 	print ("|\t-a <simbolo>    agregar	simbolo al alfabeto    			              |")
 	print ("|\t-t    Tamaño del alfabeto	      					      |")
 	print ("|										      |")
-	print ("| Elaborado por:  Jonathan Ibarra						      |")
-	print ("|                 Tania Cañizares						      |")
+	print ("|_____________________________________________________________________________________|")
+	print ("| Elaborado por: Tania Cañizares (ctania@unicauca.edu.co)                             |")
+	print ("| 		 Jonathan Ibarra (estivenp@unicauca.edu.co)                           |")
+	print ("| Electiva:      Introducción a la Criptografía                         	      |")
+	print ("| Docente:       Siler Amador Donado (samador@unicauca.edu.co)                        |")
 	print ("|         									      |")
+	print ("|                             UNIVERSIDAD DEL CAUCA                                   |")
+	print ("|                   		  Febrero 2019                                        |")
 	print (" --------------------------------------------------------------------------------------")
 
 def ayudaVigenere():
@@ -56,8 +61,6 @@ def ayudaVigenere():
 	print ("|\tcifrar: python principal.py -sva -c quijote.txt Archivo_Clave.txt             |")
 	print ("|\tdescifrar: python principal.py -sva -d quijote.txt.cif Archivo_Clave.txt      |")
 	print ("|										      |")
-	print ("| Elaborado por:  Jonathan Ibarra y Tania Cañizares	      			      |")
-	print ("|         									      |")
 	print (" --------------------------------------------------------------------------------------")
 
 def ayudaCesar():
@@ -78,8 +81,6 @@ def ayudaCesar():
 	print ("| Ejemplos:    					 				      |")
 	print ("|\tcifrar: python principal.py -sc -c quijote.txt 4                              |")
 	print ("|\tdescifrar: python principal.py -sc -d quijote.txt.cif 4                       |")
-	print ("|										      |")
-	print ("| Elaborado por:  Tania Cañizares y Jonathan Ibarra				      |")
 	print ("|         									      |")
 	print (" --------------------------------------------------------------------------------------")
 
@@ -104,9 +105,7 @@ def ayudaAfin():
 	print ("|										      |")
 	print ("| Ejemplos:    					 				      |")
 	print ("|\tcifrar: python principal.py -sa -c quijote.txt 15 4                           |")
-	print ("|\tdescifrar: python principal.py -sa -d quijote.txt.cif 15 4                        |")
-	print ("|										      |")
-	print ("| Elaborado por:  Tania Cañizares y Jonathan Ibarra				      |")
+	print ("|\tdescifrar: python principal.py -sa -d quijote.txt.cif 15 4                    |")
 	print ("|         									      |")
 	print (" --------------------------------------------------------------------------------------")
 
@@ -121,8 +120,6 @@ def ayudaFrecuencia():
 	print ("|										          |")
 	print ("| Ejemplo:    					 				          |")
 	print ("|\tpython principal.py -caf quijote.txt.cif                                          |")
-	print ("|										          |")
-	print ("| Elaborado por:  Tania Cañizares y Jonathan Ibarra				          |")
 	print ("|         									          |")
 	print (" -----------------------------------------------------------------------------------------")
 
@@ -144,7 +141,5 @@ def ayudaMascara():
 	print ("| Ejemplos:    					 				      |")
 	print ("|\tcifrar: python principal.py -mr -c quijote.txt mascara.txt                    |")
 	print ("|\tdescifrar: python principal.py -mr -d quijote.txt.cif mascara.txt             |")
-	print ("|										      |")
-	print ("| Elaborado por:  Tania Cañizares y Jonathan Ibarra				      |")
 	print ("|         									      |")
 	print (" --------------------------------------------------------------------------------------")

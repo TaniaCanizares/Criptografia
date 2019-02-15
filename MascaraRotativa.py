@@ -15,7 +15,7 @@ def imprimir(matriz,n):
 		while(j<n):
 			ma=ma+matriz[i][j]
 			j=j+1
-		print ma
+		print (ma)
 		j=0
 		i=i+1
 
@@ -35,7 +35,7 @@ def verificarMascara(m,m2,m3,m4):
 			if(m4[i][j].upper()=="X"):
 				rep=rep+1
 			if(rep>1):
-				print "Hay coincidencia en la perforacion",i,",",j," al rotarla"
+				print ("Hay coincidencia en la perforacion",i,",",j," al rotarla")
 				sys.exit()
 			j=j+1
 		i=i+1
@@ -109,9 +109,9 @@ def cifradoMR(arch,masc):
 	p = archivo.abrirArchivo(masc)
 	if f=='' or p=='':
 		if f=='':
-			print 'No se encontro el archivo ',arch
+			print ('No se encontro el archivo ',arch)
 		if p=='':
-			print 'No se encontro el archivo ',masc
+			print ('No se encontro el archivo ',masc)
 		sys.exit()
 	for pal in f.readlines():
 		mensaje=mensaje+pal
@@ -122,14 +122,14 @@ def cifradoMR(arch,masc):
 		perforaciones.append(per)
 	p.close()
 	if(int(perforaciones[0])<n):
-		print "El tamaño de la matriz es muy pequeño, debe tener un tamaño minimo de ",n
+		print ("El tamaño de la matriz es muy pequeño, debe tener un tamaño minimo de ",n)
 		sys.exit()
 	x=int(numC/4)
 	if(x<(numC/4.0)):
 		x=x+1
 	if((len(perforaciones)-1)!=x):
-		print "El numero de perforaciones 'X' no es el correcto"
-		print "La mascara debe tener ",x," perforaciones"	
+		print ("El numero de perforaciones 'X' no es el correcto")
+		print ("La mascara debe tener ",x," perforaciones"	)
 		sys.exit()	
 	matriz=[]
 	mascara=[]
@@ -143,7 +143,7 @@ def cifradoMR(arch,masc):
 		mascara3=rotar(mascara2,n)
 		mascara4=rotar(mascara3,n)
 	else:
-		print "La mascara debe tener tamaño ",n,"x",n
+		print ("La mascara debe tener tamaño ",n,"x",n)
 		sys.exit()
 	verificarMascara(mascara,mascara2,mascara3,mascara4)
 	numP=len(perforaciones)-1
@@ -159,15 +159,15 @@ def cifradoMR(arch,masc):
 	completrar(matriz,mensaje,numC)
 	cif=generarCif(matriz)
 	sal = arch+".cif"
-	print sal
+	print (sal)
 	fichero = archivo.escribirArchivo(sal, cif)
 	if fichero=='':
-		print 'Ocurrio un error al intentar escribir en ', n
+		print ('Ocurrio un error al intentar escribir en ', n)
 	else:
 		fichero.close()
-		print "\n*********************************************************************"
-		print "  SE GENERO EL ARCHIVO ", sal," CON EL MENSAJE CIFRADO"
-		print "*********************************************************************\n\n"
+		print ("\n*********************************************************************")
+		print ("  SE GENERO EL ARCHIVO ", sal," CON EL MENSAJE CIFRADO")
+		print ("*********************************************************************\n\n")
 
 
 ### Metodos para descifrar
@@ -206,7 +206,7 @@ def descifradoMR(arch,masc):
 	f = archivo.abrirArchivo(arch)
 	p = archivo.abrirArchivo(masc)
 	if f=='' or p=='':
-		print 'No se encontro el archivo ',arch
+		print ('No se encontro el archivo ',arch)
 		sys.exit()
 	for pal in f.readlines():
 		mensaje=mensaje+pal
@@ -217,7 +217,7 @@ def descifradoMR(arch,masc):
 		perforaciones.append(per)
 	p.close()
 	if(int(perforaciones[0])<n):
-		print "El tamaño de la matriz es muy pequeño, debe tener un tamaño minimo de ",n
+		print ("El tamaño de la matriz es muy pequeño, debe tener un tamaño minimo de ",n)
 		sys.exit()
 	matriz=[]
 	mascara=[]
@@ -239,10 +239,10 @@ def descifradoMR(arch,masc):
 	sal = arch.replace("cif","dec")
 	fichero = archivo.escribirArchivo(sal,men)
 	if fichero=='':
-		print 'Ocurrio un error al intentar escribir en ', sal
+		print ('Ocurrio un error al intentar escribir en ', sal)
 	else:
 		fichero.close()
-		print "\n*********************************************************************"
-		print "SE GENERO EL ARCHIVO ",sal," CON EL MENSAJE EN CLARO"
-		print "*********************************************************************\n\n\n"
+		print ("\n*********************************************************************")
+		print ("SE GENERO EL ARCHIVO ",sal," CON EL MENSAJE EN CLARO")
+		print ("*********************************************************************\n\n\n")
 

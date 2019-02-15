@@ -10,7 +10,7 @@ abc = alfabeto.getAlfabeto()
 def cifrarCesar(texto, clave, nombreArchivoSalida):
 	mensajeCifrado = ""
 	i = 0
-	print texto
+	#print texto
 	while (i < len(texto)):
 		if texto[i] == '\xc3' or texto[i] == '\xc2':
 			caracter = texto[i] + texto[i + 1]
@@ -23,9 +23,9 @@ def cifrarCesar(texto, clave, nombreArchivoSalida):
 		i+=1			
 	f = archivo.escribirArchivo(nombreArchivoSalida, mensajeCifrado)
 	if f =='':
-		print 'Ocurrio un error al intentar escribir en', nombreArchivoSalida
+		print ('Ocurrio un error al intentar escribir en', nombreArchivoSalida)
 	else:
-		print 'El mensaje cifrado se guardo correctamente en',nombreArchivoSalida
+		print ('El mensaje cifrado se guardo correctamente en',nombreArchivoSalida)
 		f.close()
 	sys.stdin.flush()
 	#print mensajeCifrado
@@ -45,9 +45,9 @@ def descifrarCesar(criptograma, clave, nombreArchivoSalida):
 		i+=1
 	f = archivo.escribirArchivo(nombreArchivoSalida, mensajeClaro)
 	if f=='':
-		print 'Ocurrio un error al intentar escribir en', nombreArchivoSalida
+		print ('Ocurrio un error al intentar escribir en', nombreArchivoSalida)
 	else:
-		print 'El mensaje descifrado se guardo correctamente en',nombreArchivoSalida
+		print ('El mensaje descifrado se guardo correctamente en',nombreArchivoSalida)
 		f.close()	
 	sys.stdin.flush()
 	#print mensajeClaro
@@ -57,25 +57,25 @@ def obtenerEntero(cla):
 	try:
 		clave = int(cla)
 	except ValueError:
-		print "Ingresa un numero entre 1 y \n",TAM_ALFABETO-1
+		print ("Ingresa un numero entre 1 y \n",TAM_ALFABETO-1)
 		return -1
 	else:
 		if (clave >= 0 and clave < TAM_ALFABETO):
 			return clave
 		else:
-			print 'Ingresa un numero entre 1 y \n', TAM_ALFABETO-1
+			print ('Ingresa un numero entre 1 y \n', TAM_ALFABETO-1)
 			return -1
 		
 
 def cifrarDescifrar():
 	accion = 0
-	print '\n1. Cifrar \n2. Descifrar \n3. Regresar'
+	print ('\n1. Cifrar \n2. Descifrar \n3. Regresar')
 	try:
 		accion = int(input('\nIngresa una opcion: '))
 	except NameError:
-		print "Debes ingresar un numero entre 1 y 3"
+		print ("Debes ingresar un numero entre 1 y 3")
 	else:
 		if accion >= 1 and accion <=3:
 			return accion
 		else:
-			print 'Debes ingresar un numero entre 1 y 3'
+			print ('Debes ingresar un numero entre 1 y 3')

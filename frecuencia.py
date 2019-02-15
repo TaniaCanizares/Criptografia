@@ -14,6 +14,7 @@ def analisisFrecuencia(criptograma, nomArchivoSalida):
 	sys.stdin.flush()
 	listaFrecu = frecuencias(criptograma)
 	k = verificarHipostesis(listaFrecu)
+	print ('La clave es: ',k)
 	mensajeClaro = ""
 	i=0
 	while (i < len(criptograma)):
@@ -28,9 +29,9 @@ def analisisFrecuencia(criptograma, nomArchivoSalida):
 		i+=1
 	f = archivo.escribirArchivo(nomArchivoSalida, mensajeClaro)
 	if f=='':
-		print 'Ocurrio un error al intentar escribir en', nomArchivoSalida
+		print ('Ocurrio un error al intentar escribir en', nomArchivoSalida)
 	else:
-		print 'El mensaje descifrado se guardo correctamente en',nomArchivoSalida
+		print ('El mensaje descifrado se guardo correctamente en',nomArchivoSalida)
 		f.close()
 	#print mensajeClaro
 		

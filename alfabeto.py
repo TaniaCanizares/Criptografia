@@ -1,18 +1,19 @@
 #!/usr/bin/python
-# -*- coding: latin-1 -*-
+# -*- coding: utf-8 -*-
 import os, sys
 import archivo
 
-Alfabeto=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x'
+"""Alfabeto=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x'
 ,'y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X'
-,'Y','Z','0','1','2','3','4','5','6','7','8','9','.',',',' ','\n','_','ü','Ü',':','«','Ï',']','À','Ù']
+,'Y','Z','0','1','2','3','4','5','6','7','8','9','.',',',' ','\n','_','ü','Ü',':','«','Ï',']','À','Ù']"""
 Alfabeto=[]
+al=['Ñ']
 nomAlfabeto='Alfabeto.txt'
 
 def cargarAlf():
 	A=archivo.abrirArchivo(nomAlfabeto)
 	if A=='':
-		print 'No se encontro el archivo '+nomAlfabeto
+		print ('No se encontro el archivo '+nomAlfabeto)
 	for letra in A.readlines():
 		if(letra[0]!="\xc3" and letra[0]!="\xc2" and letra[0]+letra[1]!="\\n"):
 			Alfabeto.append(letra[0])
@@ -28,18 +29,19 @@ def agregarSimbolo(simbolo):
 	simb=simbolo+"\n"
 	fichero = archivo.escribirAlfabeto(nomAlfabeto,simb)
 	if fichero=='':
-		print 'Ocurrio un error al intentar escribir en ', n
+		print ('Ocurrio un error al intentar escribir en ', n)
 	else:
 		fichero.close()
 	Alfabeto.append(simbolo)
-	imprimir()
+	print ("Se agrego el simbolo ",simbolo," al alfabeto"	)
+	#imprimir()
 
 def existe(simbolo):
 	if(simbolo in Alfabeto):
-		print "El simbolo que desea agregar ya existe dentro del alfabeto"
+		print ("El simbolo que desea agregar ya existe dentro del alfabeto")
 		return True
 	else:
-		print "El simbolo no se encuentra en el alfabeto"
+		print ("El simbolo no se encuentra en el alfabeto")
 		return False
 
 def imprimir():
@@ -47,7 +49,7 @@ def imprimir():
 	while(i<len(Alfabeto)):
 		j=0
 		alf=""
-		print '----------------------------------------------------------------------------'
+		print ('----------------------------------------------------------------------------')
 		while(j<20):
 			if(Alfabeto[i]=="\n"):
 				alf=alf+'|\\n|'	
@@ -57,7 +59,7 @@ def imprimir():
 			if(i==len(Alfabeto)):
 				j=20
 			j=j+1
-		print alf
+		print (alf)
 
 def getAlfabeto():
 	return Alfabeto
@@ -69,5 +71,15 @@ def getPosicion(letra):
 	return Alfabeto.index(letra)
 	
 cargarAlf()
-#print Alfabeto.index('Ñ')
+#agregarSimbolo('ñ')
+#print (Alfabeto.index('Ñ'))
 #imprimir()
+
+
+
+#print (chr(91))
+
+#print (map(chr,range(65,91)))
+
+
+

@@ -21,9 +21,9 @@ def cifrarAfin(texto, a, b, nombreArchivoSalida):
 		i+=1
 	f = archivo.escribirArchivo(nombreArchivoSalida, mensajeCifrado)
 	if f=='':
-		print 'Ocurrio un error al intentar escribir en', nombreArchivoSalida
+		print ('Ocurrio un error al intentar escribir en', nombreArchivoSalida)
 	else:
-		print 'Se guardo correctamente el mensaje cifrado en', nombreArchivoSalida
+		print ('Se guardo correctamente el mensaje cifrado en', nombreArchivoSalida)
 		f.close()
 	sys.stdin.flush()
 	#print mensajeCifrado
@@ -44,9 +44,9 @@ def descifrarAfin(texto, a, b, nombreArchivoSalida):
 		i+=1
 	f = archivo.escribirArchivo(nombreArchivoSalida, mensajeClaro)
 	if f=='':
-		print 'Ocurrio un error al intentar escribir en', nombreArchivoSalida
+		print ('Ocurrio un error al intentar escribir en', nombreArchivoSalida)
 	else:
-		print 'Se guardo correctamente el mensaje descifrado en',nombreArchivoSalida
+		print ('Se guardo correctamente el mensaje descifrado en',nombreArchivoSalida)
 		f.close()
 	sys.stdin.flush()
 	#print mensajeClaro
@@ -85,13 +85,13 @@ def obtenerA(valor):
 	try:
 		a = int(valor)
 	except ValueError:
-		print "Ingresa un numero entre 1 y ",TAM_ALFABETO-1," para 'a'\n"
+		print ("Ingresa un numero entre 1 y ",TAM_ALFABETO-1," para 'a'\n")
 		return -1
 	else:
 		if (a >= 0 and a < TAM_ALFABETO):
 			return a
 		else:
-			print 'Ingresa un numero entre 1 y ',TAM_ALFABETO-1," para 'a'\n"
+			print ('Ingresa un numero entre 1 y ',TAM_ALFABETO-1," para 'a'\n")
 			return -1
 
 def obtenerB(valor):
@@ -99,11 +99,11 @@ def obtenerB(valor):
 	try:
 		a = int(valor)
 	except ValueError:
-		print "Ingresa un numero entre 1 y ",TAM_ALFABETO-1," para 'b'\n"
+		print ("Ingresa un numero entre 1 y ",TAM_ALFABETO-1," para 'b'\n")
 		return -1
 	else:
 		if (a >= 0 and a < TAM_ALFABETO):
 			return a
 		else:
-			print 'Ingresa un numero entre 1 y ', TAM_ALFABETO-1," para 'b'\n"
+			print ('Ingresa un numero entre 1 y ', TAM_ALFABETO-1," para 'b'\n")
 			return -1

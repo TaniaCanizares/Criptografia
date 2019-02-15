@@ -12,8 +12,8 @@ from time import time
 
 def validacionVigenere(argumentos):
 	if(len(argumentos)!=5):
-		print "\nEl numero de parametros es incorrecto"
-		print "Revisar la ayuda del algoritmo de vigenere: python principal.py -sva\n"
+		print ("\nEl numero de parametros es incorrecto")
+		print ("Revisar la ayuda del algoritmo de vigenere: python principal.py -sva\n")
 	else:
 		if(argumentos[2]=="-c"):
 			start_time = time()
@@ -27,19 +27,19 @@ def validacionVigenere(argumentos):
 			elapsed_time = time() - start_time
 			print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
 		else: 
-			print "\nEl modo ",argumentos[2]," es incorrecto"
-			print "Revisar la ayuda del algoritmo de vigenere: python principal.py -sva\n"
+			print ("\nEl modo ",argumentos[2]," es incorrecto")
+			print ("Revisar la ayuda del algoritmo de vigenere: python principal.py -sva\n")
 
 def validacionCesar(argumentos):
 	texto = ""
 	if(len(argumentos)!=5):
-		print "\nEl numero de parametros es incorrecto"
-		print "Revisar la ayuda del algoritmo de cesar: python principal.py -sc\n"
+		print ("\nEl numero de parametros es incorrecto")
+		print ("Revisar la ayuda del algoritmo de cesar: python principal.py -sc\n")
 	else:
 		if(argumentos[2]=="-c"):
 			f = archivo.abrirArchivo(argumentos[3])
 			if f=='':
-				print 'No se encontro el archivo '+argumentos[3]
+				print ('No se encontro el archivo '+argumentos[3])
 			else:
 				for pal in f.readlines():
 					texto=texto+pal
@@ -53,7 +53,7 @@ def validacionCesar(argumentos):
 		elif(argumentos[2]=="-d"):
 			f = archivo.abrirArchivo(argumentos[3])
 			if f=='':
-				print 'No se encontro el archivo '+argumentos[3]
+				print ('No se encontro el archivo '+argumentos[3])
 			else:
 				for pal in f.readlines():
 					texto=texto+pal
@@ -66,19 +66,19 @@ def validacionCesar(argumentos):
 					elapsed_time = time() - start_time
 					print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
 		else: 
-			print "\nEl modo ",argumentos[2]," es incorrecto"
-			print "Revisar la ayuda del algoritmo de cesar: python principal.py -sc\n"
+			print ("\nEl modo ",argumentos[2]," es incorrecto")
+			print ("Revisar la ayuda del algoritmo de cesar: python principal.py -sc\n")
 
 def validacionAfin(argumentos):
 	texto = ""
 	if(len(argumentos)!=6):
-		print "\nEl numero de parametros es incorrecto"
-		print "Revisar la ayuda del algoritmo de afin: python principal.py -sa\n"
+		print ("\nEl numero de parametros es incorrecto")
+		print ("Revisar la ayuda del algoritmo de afin: python principal.py -sa\n")
 	else:
 		if(argumentos[2]=="-c"):
 			f = archivo.abrirArchivo(argumentos[3])
 			if f=='':
-				print 'No se encontro el archivo '+argumentos[3]
+				print ('No se encontro el archivo '+argumentos[3])
 			else:
 				for pal in f.readlines():
 					texto=texto+pal
@@ -86,8 +86,8 @@ def validacionAfin(argumentos):
 				a = afin.obtenerA(argumentos[4])
 				if (a != -1):
 					if (afin.verificarCoprimo(a) != True):	
-						print 'El nuemero a es invalido'
-						print 'El numero debe ser primo con el tamano del alfabeto' 
+						print ('El nuemero a es invalido')
+						print ('El numero debe ser primo con el tamano del alfabeto' )
 					else:
 						b = afin.obtenerB(argumentos[5])
 						if(b != -1):
@@ -98,7 +98,7 @@ def validacionAfin(argumentos):
 		elif(argumentos[2]=="-d"):
 			f = archivo.abrirArchivo(argumentos[3])
 			if f=='':
-				print 'No se encontro el archivo '+argumentos[3]
+				print ('No se encontro el archivo '+argumentos[3])
 			else:
 				for pal in f.readlines():
 					texto=texto+pal
@@ -106,8 +106,8 @@ def validacionAfin(argumentos):
 				a = afin.obtenerA(argumentos[4])
 				if (a != -1):
 					if (afin.verificarCoprimo(a) != True):	
-						print 'El nuemero a es invalido'
-						print 'El numero debe ser primo con el tamano del alfabeto' 					
+						print ('El nuemero a es invalido')
+						print ('El numero debe ser primo con el tamano del alfabeto') 					
 					else:					
 						b = afin.obtenerB(argumentos[5])
 						nomArchivoDec = argumentos[3].replace('.cif', '.dec')
@@ -117,17 +117,17 @@ def validacionAfin(argumentos):
 							elapsed_time = time() - start_time
 							print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
 		else: 
-			print "\nEl modo ",argumentos[2]," es incorrecto"
-			print "Revisar la ayuda del algoritmo de afin: python principal.py -sa\n"
+			print ("\nEl modo ",argumentos[2]," es incorrecto")
+			print ("Revisar la ayuda del algoritmo de afin: python principal.py -sa\n")
 
 def validacionFrecuencia(argumentos):
 	if(len(argumentos)!=3):
-		print "\nEl numero de parametros es incorrecto"
-		print "Revisar la ayuda del algoritmo de criptoanalisis por frecuencia: python principal.py -caf\n"
+		print ("\nEl numero de parametros es incorrecto")
+		print ("Revisar la ayuda del algoritmo de criptoanalisis por frecuencia: python principal.py -caf\n")
 	else:
 		f = archivo.abrirArchivo(argumentos[2])
 		if f=='':
-			print 'No se encontro el archivo '+argumentos[2]
+			print ('No se encontro el archivo '+argumentos[2])
 		else:
 			texto = ""
 			nomArchivoDec = argumentos[2].replace('.cif', '.dec')
@@ -141,8 +141,8 @@ def validacionFrecuencia(argumentos):
 
 def validacionMascara(argumentos):
 	if(len(argumentos)!=5):
-		print "\nEl numero de parametros es incorrecto"
-		print "Revisar la ayuda del algoritmo de Mascara Rotativa: python principal.py -mr\n"
+		print ("\nEl numero de parametros es incorrecto")
+		print ("Revisar la ayuda del algoritmo de Mascara Rotativa: python principal.py -mr\n")
 	else:
 		if(argumentos[2]=="-c"):
 			start_time = time()
@@ -155,5 +155,5 @@ def validacionMascara(argumentos):
 			elapsed_time = time() - start_time
 			print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
 		else: 
-			print "\nEl modo ",argumentos[2]," es incorrecto"
-			print "Revisar la ayuda del algoritmo de Mascara Rotativa: python principal.py -mr\n"
+			print ("\nEl modo ",argumentos[2]," es incorrecto")
+			print ("Revisar la ayuda del algoritmo de Mascara Rotativa: python principal.py -mr\n")

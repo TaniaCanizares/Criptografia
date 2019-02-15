@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: latin-1 -*-
+# -*- coding: utf-8 -*-
 import os, sys
 import archivo
 import alfabeto
@@ -12,9 +12,9 @@ def cifraVigenere(archEnt,clave,archSal):
 	h = archivo.abrirArchivo(clave)
 	if f=='' or h=='':
 		if(f==''):
-			print 'No se encontro el archivo '+doc
+			print ('No se encontro el archivo '+doc)
 		else: 
-			print 'No se encontro el archivo '+clave
+			print ('No se encontro el archivo '+clave)
 	else:
 		for pal in f.readlines():
 			palabra=palabra+pal
@@ -68,6 +68,7 @@ def cifraVigenere(archEnt,clave,archSal):
 					j=j+1
 					c=c+dato
 				else:
+					#print "",palabra[i]
 					dato=alf[((alf.index(palabra[i])+alf.index(palabra[j-lk]))%la)]
 					c=c+dato
 			i=i+1
@@ -81,12 +82,12 @@ def cifraVigenere(archEnt,clave,archSal):
 		n = archSal
 		fichero = archivo.escribirArchivo(n, c)
 		if fichero=='':
-			print 'Ocurrio un error al intentar escribir en ', n
+			print ('Ocurrio un error al intentar escribir en ', n)
 		else:
 			fichero.close()
-			print "\n*********************************************************************"
-			print "  SE GENERO EL ARCHIVO ", n," CON EL MENSAJE CIFRADO"
-			print "*********************************************************************\n\n"
+			print ("\n*********************************************************************")
+			print ("  SE GENERO EL ARCHIVO ", n," CON EL MENSAJE CIFRADO")
+			print ("*********************************************************************\n\n")
 
 #-------------------------------------------------
 def descVigenere(archEnt,clave,archSal):
@@ -97,9 +98,9 @@ def descVigenere(archEnt,clave,archSal):
 	h = archivo.abrirArchivo(clave)
 	if f=='' or h=='':
 		if(f==''):
-			print 'No se encontro el archivo '+doc
+			print ('No se encontro el archivo '+doc)
 		else: 
-			print 'No se encontro el archivo '+clave
+			print ('No se encontro el archivo '+clave)
 	else:
 		for pal in f.readlines():
 			palabra=palabra+pal
@@ -160,18 +161,18 @@ def descVigenere(archEnt,clave,archSal):
 		n = archSal
 		fichero = archivo.escribirArchivo(n,m)
 		if fichero=='':
-			print 'Ocurrio un error al intentar escribir en ', n
+			print ('Ocurrio un error al intentar escribir en ', n)
 		else:
 			fichero.close()
-			print "\n*********************************************************************"
-			print "SE GENERO EL ARCHIVO ",n," CON EL MENSAJE EN CLARO"
-			print "*********************************************************************\n\n\n"
+			print ("\n*********************************************************************")
+			print ("SE GENERO EL ARCHIVO ",n," CON EL MENSAJE EN CLARO")
+			print ("*********************************************************************\n\n\n")
 
 def imprimirTexto(texto):
 	i=0	
-	print "-------------------------------------------"
+	print ("-------------------------------------------")
 	while(i<200):
-		print texto[i]
+		print (texto[i])
 		i=i+1
 
 	

@@ -13,7 +13,7 @@ from time import time
 def validacionVigenere(argumentos):
 	if(len(argumentos)!=5):
 		print ("\nEl numero de parametros es incorrecto")
-		print ("Revisar la ayuda del algoritmo de vigenere: python principal.py -sva\n")
+		print ("Revisar la ayuda del algoritmo de vigenere: python3 principal.py -sva\n")
 	else:
 		if(argumentos[2]=="-c"):
 			start_time = time()
@@ -28,13 +28,13 @@ def validacionVigenere(argumentos):
 			print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
 		else: 
 			print ("\nEl modo ",argumentos[2]," es incorrecto")
-			print ("Revisar la ayuda del algoritmo de vigenere: python principal.py -sva\n")
+			print ("Revisar la ayuda del algoritmo de vigenere: python3 principal.py -sva\n")
 
 def validacionCesar(argumentos):
 	texto = ""
 	if(len(argumentos)!=5):
 		print ("\nEl numero de parametros es incorrecto")
-		print ("Revisar la ayuda del algoritmo de cesar: python principal.py -sc\n")
+		print ("Revisar la ayuda del algoritmo de cesar: python3 principal.py -sc\n")
 	else:
 		if(argumentos[2]=="-c"):
 			f = archivo.abrirArchivo(argumentos[3])
@@ -67,13 +67,13 @@ def validacionCesar(argumentos):
 					print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
 		else: 
 			print ("\nEl modo ",argumentos[2]," es incorrecto")
-			print ("Revisar la ayuda del algoritmo de cesar: python principal.py -sc\n")
+			print ("Revisar la ayuda del algoritmo de cesar: python3 principal.py -sc\n")
 
 def validacionAfin(argumentos):
 	texto = ""
 	if(len(argumentos)!=6):
 		print ("\nEl numero de parametros es incorrecto")
-		print ("Revisar la ayuda del algoritmo de afin: python principal.py -sa\n")
+		print ("Revisar la ayuda del algoritmo de afin: python3 principal.py -sa\n")
 	else:
 		if(argumentos[2]=="-c"):
 			f = archivo.abrirArchivo(argumentos[3])
@@ -118,12 +118,12 @@ def validacionAfin(argumentos):
 							print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
 		else: 
 			print ("\nEl modo ",argumentos[2]," es incorrecto")
-			print ("Revisar la ayuda del algoritmo de afin: python principal.py -sa\n")
+			print ("Revisar la ayuda del algoritmo de afin: python3 principal.py -sa\n")
 
 def validacionFrecuencia(argumentos):
 	if(len(argumentos)!=3):
 		print ("\nEl numero de parametros es incorrecto")
-		print ("Revisar la ayuda del algoritmo de criptoanalisis por frecuencia: python principal.py -caf\n")
+		print ("Revisar la ayuda del algoritmo de criptoanalisis por frecuencia: python3 principal.py -caf\n")
 	else:
 		f = archivo.abrirArchivo(argumentos[2])
 		if f=='':
@@ -142,7 +142,7 @@ def validacionFrecuencia(argumentos):
 def validacionMascara(argumentos):
 	if(len(argumentos)!=5):
 		print ("\nEl numero de parametros es incorrecto")
-		print ("Revisar la ayuda del algoritmo de Mascara Rotativa: python principal.py -mr\n")
+		print ("Revisar la ayuda del algoritmo de Mascara Rotativa: python3 principal.py -mr\n")
 	else:
 		if(argumentos[2]=="-c"):
 			start_time = time()
@@ -156,4 +156,4 @@ def validacionMascara(argumentos):
 			print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
 		else: 
 			print ("\nEl modo ",argumentos[2]," es incorrecto")
-			print ("Revisar la ayuda del algoritmo de Mascara Rotativa: python principal.py -mr\n")
+			print ("Revisar la ayuda del algoritmo de Mascara Rotativa: python3 principal.py -mr\n")

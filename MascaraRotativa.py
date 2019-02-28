@@ -129,7 +129,7 @@ def cifradoMR(arch,masc):
 		x=x+1
 	if((len(perforaciones)-1)!=x):
 		print ("El numero de perforaciones 'X' no es el correcto")
-		print ("La mascara debe tener ",x," perforaciones"	)
+		print ("La mascara debe tener ",x," perforaciones"," y tiene :",(len(perforaciones)-1))
 		sys.exit()	
 	matriz=[]
 	mascara=[]

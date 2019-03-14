@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: latin-1 -*-
+# -*- coding: utf8 -*-
 import ayuda
 import vigenere
 import archivo
@@ -12,7 +12,7 @@ from time import time
 
 def validacionVigenere(argumentos):
 	if(len(argumentos)!=5):
-		print ("\nEl numero de parametros es incorrecto")
+		print ("\nEl número de parámetros es incorrecto")
 		print ("Revisar la ayuda del algoritmo de vigenere: python3 principal.py -sva\n")
 	else:
 		if(argumentos[2]=="-c"):
@@ -33,7 +33,7 @@ def validacionVigenere(argumentos):
 def validacionCesar(argumentos):
 	texto = ""
 	if(len(argumentos)!=5):
-		print ("\nEl numero de parametros es incorrecto")
+		print ("\nEl número de parámetros es incorrecto")
 		print ("Revisar la ayuda del algoritmo de cesar: python3 principal.py -sc\n")
 	else:
 		if(argumentos[2]=="-c"):
@@ -72,8 +72,8 @@ def validacionCesar(argumentos):
 def validacionAfin(argumentos):
 	texto = ""
 	if(len(argumentos)!=6):
-		print ("\nEl numero de parametros es incorrecto")
-		print ("Revisar la ayuda del algoritmo de afin: python3 principal.py -sa\n")
+		print ("\nEl número de parámetros es incorrecto")
+		print ("Revisar la ayuda del algoritmo de afín: python3 principal.py -sa\n")
 	else:
 		if(argumentos[2]=="-c"):
 			f = archivo.abrirArchivo(argumentos[3])
@@ -86,8 +86,8 @@ def validacionAfin(argumentos):
 				a = afin.obtenerA(argumentos[4])
 				if (a != -1):
 					if (afin.verificarCoprimo(a) != True):	
-						print ('El nuemero a es invalido')
-						print ('El numero debe ser primo con el tamano del alfabeto' )
+						print ('El núemero a es invalido')
+						print ('El número debe ser primo con el tamaño del alfabeto' )
 					else:
 						b = afin.obtenerB(argumentos[5])
 						if(b != -1):
@@ -106,8 +106,8 @@ def validacionAfin(argumentos):
 				a = afin.obtenerA(argumentos[4])
 				if (a != -1):
 					if (afin.verificarCoprimo(a) != True):	
-						print ('El nuemero a es invalido')
-						print ('El numero debe ser primo con el tamano del alfabeto') 					
+						print ('El número a es invalido')
+						print ('El número debe ser primo con el tamano del alfabeto') 					
 					else:					
 						b = afin.obtenerB(argumentos[5])
 						nomArchivoDec = argumentos[3].replace('.cif', '.dec')
@@ -122,7 +122,7 @@ def validacionAfin(argumentos):
 
 def validacionFrecuencia(argumentos):
 	if(len(argumentos)!=3):
-		print ("\nEl numero de parametros es incorrecto")
+		print ("\nEl número de parámetros es incorrecto")
 		print ("Revisar la ayuda del algoritmo de criptoanalisis por frecuencia: python3 principal.py -caf\n")
 	else:
 		f = archivo.abrirArchivo(argumentos[2])
@@ -141,7 +141,7 @@ def validacionFrecuencia(argumentos):
 
 def validacionMascara(argumentos):
 	if(len(argumentos)!=5):
-		print ("\nEl numero de parametros es incorrecto")
+		print ("\nEl número de parámetros es incorrecto")
 		print ("Revisar la ayuda del algoritmo de Mascara Rotativa: python3 principal.py -mr\n")
 	else:
 		if(argumentos[2]=="-c"):

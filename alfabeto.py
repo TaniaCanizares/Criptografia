@@ -68,7 +68,10 @@ def tamAlfabeto():
 	return len(Alfabeto)
 
 def getPosicion(letra):
-	return Alfabeto.index(letra)
+	try:
+		return Alfabeto.index(letra)
+	except:
+		return -1
 	
 cargarAlf()
 #agregarSimbolo('ñ')

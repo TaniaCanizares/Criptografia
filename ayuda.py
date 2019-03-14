@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: latin-1 -*-
+# -*- coding: utf8 -*-
 import os, sys
 
 def ayudaPrincipal():
@@ -66,7 +66,7 @@ def ayudaVigenere():
 def ayudaCesar():
 	print (" --------------------------------------------------------------------------------------")
 	print ("|                                                                                     |")
-	print ("| \tALGORITMO CESAR		                                                      |")
+	print ("| \tALGORITMO JULIO CÉSAR		                                                      |")
 	print ("|										      |")
 	print ("| sintaxis: python3 principal.py -sc <modo> <archivoEntrada> <clave>                  |")
 	print ("|										      |")
@@ -76,7 +76,7 @@ def ayudaCesar():
 	print ("| 										      |")
 	print ("| <archivoEntrada>: Nombre del archivo de entrada a cifrar o descifrar ej: quijote.txt|")
 	print ("|										      |")
-	print ("| <clave>: es un numero que corresponde al desplazamiento del alfabeto                |")
+	print ("| <clave>: es un número que corresponde al desplazamiento del alfabeto                |")
 	print ("|										      |")
 	print ("| Ejemplos:    					 				      |")
 	print ("|\tcifrar: python3 principal.py -sc -c quijote.txt 4                             |")
@@ -87,7 +87,7 @@ def ayudaCesar():
 def ayudaAfin():
 	print (" --------------------------------------------------------------------------------------")
 	print ("|                                                                                     |")
-	print ("| \tALGORITMO AFIN		                                                      |")
+	print ("| \tALGORITMO AFÍN		                                                      |")
 	print ("|										      |")
 	print ("| sintaxis: python3 principal.py -sa <modo> <archivoEntrada> <a> <b>                  |")
 	print ("|										      |")
@@ -97,15 +97,15 @@ def ayudaAfin():
 	print ("| 										      |")
 	print ("| <archivoEntrada>: Nombre del archivo de entrada a cifrar o descifrar ej: quijote.txt|")
 	print ("|										      |")
-	print ("| a y b deben estar en el siguiente rango 0<(a,b)<n-1  con n= Tamano del alfabeto     |")
+	print ("| a y b deben estar en el siguiente rango 0<(a,b)<n-1  con n= Tamaño del alfabeto     |")
 	print ("|										      |")
-	print ("| <a>: es un numero que sea co-primo con n (mcd(a,n)=1)      n=Tamano del alfabeto    |")
+	print ("| <a>: es un número que sea co-primo con n (mcd(a,n)=1)      n=Tamaño del alfabeto    |")
 	print ("|										      |")
-	print ("| <b>: es un numero que corresponde al desplazamiento del alfabeto(clave)             |")
+	print ("| <b>: es un número que corresponde al desplazamiento del alfabeto(clave)             |")
 	print ("|										      |")
 	print ("| Ejemplos:    					 				      |")
-	print ("|\tcifrar: python3 principal.py -sa -c quijote.txt 15 4                          |")
-	print ("|\tdescifrar: python3 principal.py -sa -d quijote.txt.cif 15 4                   |")
+	print ("|\tcifrar: python3 principal.py -sa -c quijote.txt 17 5                          |")
+	print ("|\tdescifrar: python3 principal.py -sa -d quijote.txt.cif 17 5                   |")
 	print ("|         									      |")
 	print (" --------------------------------------------------------------------------------------")
 
@@ -126,7 +126,7 @@ def ayudaFrecuencia():
 def ayudaMascara():
 	print (" --------------------------------------------------------------------------------------")
 	print ("|                                                                             	      |")
-	print ("| \tALGORITMO MASCARA ROTATIVA	                                              |")
+	print ("| \tALGORITMO MÁSCARA ROTATIVA	                                              |")
 	print ("|										      |")
 	print ("| sintaxis: python3 principal.py -mr <modo> <archivoEntrada> <Mascara>                 |")
 	print ("|										      |")

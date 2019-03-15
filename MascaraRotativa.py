@@ -102,10 +102,17 @@ def llenarMacara(mascara,perf):
 		mascara[int(aux[0])][int(aux[1])]="X"
 		i=i+1
 
+<<<<<<< HEAD
 def cifradoMR(arch,masc, codificacion):
+=======
+def cifradoMR(arch,masc,cod):
+>>>>>>> b7975c320c140877b428a38d518938b971e51b4e
 	mensaje=""
 	perforaciones=[]
-	f = archivo.abrirArchivo(arch)
+	if(cod==""):
+		f = archivo.abrirArchivo(arch)
+	else:
+		f = archivo.abrirArchivo64(arch)
 	p = archivo.abrirArchivo(masc)
 	if f=='' or p=='':
 		if f=='':
@@ -113,9 +120,11 @@ def cifradoMR(arch,masc, codificacion):
 		if p=='':
 			print ('No se encontro el archivo ',masc)
 		sys.exit()
-	for pal in f.readlines():
-		mensaje=mensaje+pal
-	f.close()
+	if(cod==""):	
+		for pal in f.readlines():
+			mensaje=mensaje+pal
+		f.close()
+	else: mensaje=f
 	numC=len(mensaje)
 	n=int(math.ceil(math.sqrt(numC)))
 	for per in p.readlines():
@@ -245,4 +254,7 @@ def descifradoMR(arch,masc, codificacion):
 		print ("\n*********************************************************************")
 		print ("SE GENERO EL ARCHIVO ",sal," CON EL MENSAJE EN CLARO")
 		print ("*********************************************************************\n\n\n")
+
+
+cifradoMR("./textos_prueba/quijote.txt","./textos_prueba/masQuijote.txt","-c64")
 

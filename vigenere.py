@@ -3,12 +3,16 @@
 import os, sys
 import archivo
 import alfabeto
+import base64
 
-def cifraVigenere(archEnt,clave,archSal): 
+def cifraVigenere(archEnt,clave,archSal,cod): 
 	doc=archEnt
 	palabra=""
 	k=""
-	f = archivo.abrirArchivo(doc)
+	if(cod==""):
+		f = archivo.abrirArchivo(doc)
+	else:
+		f = archivo.abrirArchivo64(doc)
 	h = archivo.abrirArchivo(clave)
 	if f=='' or h=='':
 		if(f==''):
@@ -16,9 +20,12 @@ def cifraVigenere(archEnt,clave,archSal):
 		else: 
 			print ('No se encontro el archivo '+clave)
 	else:
-		for pal in f.readlines():
-			palabra=palabra+pal
-		f.close()
+		if(cod==""):
+			for pal in f.readlines():
+				palabra=palabra+pal
+			f.close()
+		else: 
+			palabra=f
 		for cla in h.readlines():
 			k=k+cla
 		h.close()
@@ -29,16 +36,24 @@ def cifraVigenere(archEnt,clave,archSal):
 		lg=len(palabra)
 		alf=alfabeto.getAlfabeto()
 		la=alfabeto.tamAlfabeto()
+		
 		#imprimirTexto(palabra)
 		#try:
 		while(i<lg):	
 			if(j<lk):
-				dato= alf[((alf.index(palabra[i])+alf.index(k[j]))%la)]
+				if(cod==""):
+					dato= alf[((alf.index(palabra[i])+alf.index(k[j]))%la)]
+				else:
+					p1=chr(palabra[i])
+					dato= alf[((alf.index(p1)+alf.index(k[j]))%la)]
 				c=c+dato
 			else:
-
-				#print "",palabra[i]
-				dato=alf[((alf.index(palabra[i])+alf.index(palabra[j-lk]))%la)]
+				if(cod==""):
+					dato=alf[((alf.index(palabra[i])+alf.index(palabra[j-lk]))%la)]
+				else:
+					p1=chr(palabra[i])
+					p2=chr(palabra[j-lk])
+					dato=alf[((alf.index(p1)+alf.index(p2))%la)]
 				c=c+dato
 			i=i+1
 			j=j+1
@@ -53,7 +68,7 @@ def cifraVigenere(archEnt,clave,archSal):
 			print ("*********************************************************************\n\n")
 
 #-------------------------------------------------
-def descVigenere(archEnt,clave,archSal):
+def descVigenere(archEnt,clave,archSal,cod):
 	doc=archEnt
 	palabra=""
 	k=""
@@ -87,8 +102,12 @@ def descVigenere(archEnt,clave,archSal):
 				m=m+dato
 			i=i+1
 			j=j+1
+		print (m[0],"---",m[1],"----",m[2])
 		n = archSal
-		fichero = archivo.escribirArchivo(n,m)
+		if(cod==""):
+			fichero = archivo.escribirArchivo(n,m)
+		else:
+			fichero = archivo.escribirArchivo64(n,m)
 		if fichero=='':
 			print ('Ocurrio un error al intentar escribir en ', n)
 		else:
@@ -106,20 +125,5 @@ def imprimirTexto(texto):
 
 	
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#cifraVigenere("./textos_prueba/quijote.txt","./textos_prueba/clave.txt","./textos_prueba/quijote.txt.cif","-c64")
+descVigenere("./textos_prueba/quijote.txt.cif","./textos_prueba/clave.txt","./textos_prueba/quijote.txt.dec","-c64")

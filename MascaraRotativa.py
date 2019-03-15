@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: latin-1 -*-
+# -*- coding: utf8 -*-
 import os, sys
 import math
 import random
@@ -102,11 +102,7 @@ def llenarMacara(mascara,perf):
 		mascara[int(aux[0])][int(aux[1])]="X"
 		i=i+1
 
-<<<<<<< HEAD
-def cifradoMR(arch,masc, codificacion):
-=======
 def cifradoMR(arch,masc,cod):
->>>>>>> b7975c320c140877b428a38d518938b971e51b4e
 	mensaje=""
 	perforaciones=[]
 	if(cod==""):
@@ -254,7 +250,4 @@ def descifradoMR(arch,masc, codificacion):
 		print ("\n*********************************************************************")
 		print ("SE GENERO EL ARCHIVO ",sal," CON EL MENSAJE EN CLARO")
 		print ("*********************************************************************\n\n\n")
-
-
-cifradoMR("./textos_prueba/quijote.txt","./textos_prueba/masQuijote.txt","-c64")
 

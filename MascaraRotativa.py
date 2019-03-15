@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: latin-1 -*-
+# -*- coding: utf8 -*-
 import os, sys
 import math
 import random
@@ -205,7 +205,7 @@ def consMensaje(matriz,mascara):
 		i=i+1
 	return men
 
-def descifradoMR(arch,masc):
+def descifradoMR(arch,masc, codificacion):
 	mensaje=""
 	perforaciones=[]
 	f = archivo.abrirArchivo(arch)
@@ -251,6 +251,4 @@ def descifradoMR(arch,masc):
 		print ("SE GENERO EL ARCHIVO ",sal," CON EL MENSAJE EN CLARO")
 		print ("*********************************************************************\n\n\n")
 
-
 #cifradoMR("./textos_prueba/quijote.txt","./textos_prueba/masQuijote.txt","-c64")
-

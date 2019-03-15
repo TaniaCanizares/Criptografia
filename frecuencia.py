@@ -10,7 +10,7 @@ abc = alfabeto.getAlfabeto()
 frecuAlta = ['E','A','S','O', 'I', 'N', 'R', 'D', 'T']
 
 	
-def analisisFrecuencia(criptograma, nomArchivoSalida):
+def analisisFrecuencia(criptograma, nomArchivoSalida,codificacion):
 	sys.stdin.flush()
 	listaFrecu = frecuencias(criptograma)
 	k = verificarHipostesis(listaFrecu)

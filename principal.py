@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: latin-1 -*-
+# -*- coding: utf8 -*-
 import os, sys
 import ayuda
 import validaciones
@@ -23,7 +23,7 @@ elif(numArg==2):
 	elif(arg[1]=="-caf"):
 		ayuda.ayudaFrecuencia()
 	else:
-		print ("EL ALGORIMO QUE DIGITO NO ES UNA OPCION VALIDA")
+		print ("EL ALGORIMO QUE DIGITÓ NO ES UNA OPCION VÁLIDA")
 else:	
 	if(arg[1]=="Alfabeto"):
 		if(arg[2]=="-m"):
@@ -38,11 +38,9 @@ else:
 						if(alfabeto.existe(simbolo)==False):
 							alfabeto.agregarSimbolo(simbolo)
 					else:
-						print ('Digite un solo simbolo ')
-				else:
-					print ('Digite un solo simbolo')
+						print ('Digite un solo símbolo ')
 			else:
-				print ('Numero de argumentos incorrectos. Verifique la ayuda')
+				print ('Número de argumentos incorrectos. Verifique la ayuda')
 		elif(arg[2]=="-t"):
 			print (alfabeto.tamAlfabeto())
 	elif(arg[1]=="-sc"):
@@ -56,5 +54,5 @@ else:
 	elif(arg[1]=="-caf"):
 		validaciones.validacionFrecuencia(arg)
 	else:
-		print ("EL COMANDO QUE DIGITO NO ES UNA OPCION VALIDA")
+		print ("EL COMANDO QUE DIGITÓ NO ES UNA OPCION VÁLIDA")
 

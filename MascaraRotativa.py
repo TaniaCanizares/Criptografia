@@ -252,5 +252,5 @@ def descifradoMR(arch,masc):
 		print ("*********************************************************************\n\n\n")
 
 
-cifradoMR("./textos_prueba/quijote.txt","./textos_prueba/masQuijote.txt","-c64")
+#cifradoMR("./textos_prueba/quijote.txt","./textos_prueba/masQuijote.txt","-c64")
 

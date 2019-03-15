@@ -102,7 +102,6 @@ def descVigenere(archEnt,clave,archSal,cod):
 				m=m+dato
 			i=i+1
 			j=j+1
-		print (m[0],"---",m[1],"----",m[2])
 		n = archSal
 		if(cod==""):
 			fichero = archivo.escribirArchivo(n,m)
@@ -122,8 +121,3 @@ def imprimirTexto(texto):
 	while(i<200):
 		print (texto[i])
 		i=i+1
-
-	
-
-#cifraVigenere("./textos_prueba/quijote.txt","./textos_prueba/clave.txt","./textos_prueba/quijote.txt.cif","-c64")
-descVigenere("./textos_prueba/quijote.txt.cif","./textos_prueba/clave.txt","./textos_prueba/quijote.txt.dec","-c64")

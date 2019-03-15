@@ -102,7 +102,7 @@ def llenarMacara(mascara,perf):
 		mascara[int(aux[0])][int(aux[1])]="X"
 		i=i+1
 
-def cifradoMR(arch,masc):
+def cifradoMR(arch,masc, codificacion):
 	mensaje=""
 	perforaciones=[]
 	f = archivo.abrirArchivo(arch)
@@ -200,7 +200,7 @@ def consMensaje(matriz,mascara):
 		i=i+1
 	return men
 
-def descifradoMR(arch,masc):
+def descifradoMR(arch,masc, codificacion):
 	mensaje=""
 	perforaciones=[]
 	f = archivo.abrirArchivo(arch)

@@ -7,7 +7,7 @@ import alfabeto
 TAM_ALFABETO = alfabeto.tamAlfabeto()
 abc = alfabeto.getAlfabeto()
 	
-def cifrarCesar(texto, clave, nombreArchivoSalida):
+def cifrarCesar(texto, clave, nombreArchivoSalida, codificacion):
 	mensajeCifrado = ""
 	i = 0
 	#print texto
@@ -30,7 +30,7 @@ def cifrarCesar(texto, clave, nombreArchivoSalida):
 	sys.stdin.flush()
 	#print mensajeCifrado
 
-def descifrarCesar(criptograma, clave, nombreArchivoSalida):
+def descifrarCesar(criptograma, clave, nombreArchivoSalida, codificacion):
 	mensajeClaro = ""
 	i = 0
 	while (i < len(criptograma)):

@@ -6,7 +6,7 @@ import alfabeto
 TAM_ALFABETO = alfabeto.tamAlfabeto()
 abc = alfabeto.getAlfabeto()
 
-def cifrarAfin(texto, a, b, nombreArchivoSalida):
+def cifrarAfin(texto, a, b, nombreArchivoSalida, codificacion):
 	mensajeCifrado = ""
 	flag = 1
 	i = 0
@@ -31,7 +31,7 @@ def cifrarAfin(texto, a, b, nombreArchivoSalida):
 			f.close()
 	sys.stdin.flush()
 	
-def descifrarAfin(texto, a, b, nombreArchivoSalida):
+def descifrarAfin(texto, a, b, nombreArchivoSalida, codificacion):
 	x = modinv(a,TAM_ALFABETO)
 	mensajeClaro = ""
 	i = 0

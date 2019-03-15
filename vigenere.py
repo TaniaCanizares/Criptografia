@@ -1,10 +1,10 @@
 #!/usr/bin/python
-# -*- coding: latin-1 -*-
+# -*- coding: utf8 -*-
 import os, sys
 import archivo
 import alfabeto
 
-def cifraVigenere(archEnt,clave,archSal): 
+def cifraVigenere(archEnt,clave,archSal, codificacion): 
 	doc=archEnt
 	palabra=""
 	k=""
@@ -29,12 +29,20 @@ def cifraVigenere(archEnt,clave,archSal):
 		lg=len(palabra)
 		alf=alfabeto.getAlfabeto()
 		la=alfabeto.tamAlfabeto()
+		flag = 1
 		#imprimirTexto(palabra)
 		#try:
 		while(i<lg):	
 			if(j<lk):
-				dato= alf[((alf.index(palabra[i])+alf.index(k[j]))%la)]
-				c=c+dato
+				try:
+					dato= alf[((alf.index(palabra[i])+alf.index(k[j]))%la)]
+				except:
+					flag = -1
+				if(flag==-1):
+					print("El caracter ",palabra[i]," no se encuentra en el alfabeto, revise la ayuda en el menú principal para añadirlo") 
+					break
+				else:
+					c=c+dato
 			else:
 
 				#print "",palabra[i]
@@ -42,18 +50,21 @@ def cifraVigenere(archEnt,clave,archSal):
 				c=c+dato
 			i=i+1
 			j=j+1
-		n = archSal
-		fichero = archivo.escribirArchivo(n, c)
-		if fichero=='':
-			print ('Ocurrio un error al intentar escribir en ', n)
+		if(flag!=-1):
+			n = archSal
+			fichero = archivo.escribirArchivo(n, c)
+			if fichero=='':
+				print ('Ocurrio un error al intentar escribir en ', n)
+			else:
+				fichero.close()
+				print ("\n*********************************************************************")
+				print ("  SE GENERO EL ARCHIVO ", n," CON EL MENSAJE CIFRADO")
+				print ("*********************************************************************\n\n")
 		else:
-			fichero.close()
-			print ("\n*********************************************************************")
-			print ("  SE GENERO EL ARCHIVO ", n," CON EL MENSAJE CIFRADO")
-			print ("*********************************************************************\n\n")
+			print ("La ejecución se detuvo")
 
 #-------------------------------------------------
-def descVigenere(archEnt,clave,archSal):
+def descVigenere(archEnt,clave,archSal, codificacion):
 	doc=archEnt
 	palabra=""
 	k=""

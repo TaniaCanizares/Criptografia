@@ -1,0 +1,29 @@
+﻿Generacion de Mascaras 
+
+La mascara corresponde a la clave del mensaje, en el programa no se explica de manera explícita ya que hay que 
+tomar varios puntos en cuenta para crear la máscara. Los cuales se explicara a continuación:
+
+1.       Reglas:
+    a. El tamaño mínimo de la matriz, será la raíz cuadrada de la longitud del mensaje (Redondeando hacia arriba). Ejemplo: si la longitud del
+      mensaje es de 20, al sacar raíz cuadrada de 20, tendremos 4.4, por lo tanto el tamaño mínimo de la matriz deberá ser de 5.
+    b. El número de perforaciones que tendrá la máscara, es de la longitud del mensaje dividido entre 4(Redondeando hacia arriba).
+      Ejemplo: si la longitud del mensaje es de 22, al dividirlo entre 4, tendremos 5.5, por lo tanto el número de perforaciones deberá ser de 6.
+    c. Al rotar la máscara las 3 veces que indica el algoritmo, ninguna de las perforaciones se debe repetir, es decir que ninguna de las 
+      posiciones (fila, columna) de cada perforación se repita al girar la máscara, cada perforación debe tener una posición única.
+ 
+    Cabe resaltar que el programa validara que estos 3 puntos se cumplan, por lo tanto si se incumple en alguna de estas reglas, el programa 
+    informara si alguna de estas reglas son incumplidas y avisara que regla se habrá incumplido.
+
+2.       Sintaxis del archivo “mascara”:
+    a. En la primera fila o línea del archivo, deberá ir el tamaño de la matriz NxN, indicando el valor de N. Ejemplo: si la matriz tiene tamaño
+      5x5, deberá escribir en la primera línea del archivo el numero 5.
+    b. Luego en la siguiente línea escribiremos la coordenada de la primera perforación,  digitando primero la fila, luego el carácter “,”, y 
+      finalizando con la columna, Ejemplo: 0,3.
+    c. En la siguiente línea volveremos a hacer lo mismo del paso b, con la siguiente perforacion, y así  sucesivamente hasta registrar todas 
+      las coordenadas de las perforaciones de la mascara.
+
+Una vez entendido cada uno de los parámetros, procedemos a ejecutar el algoritmo ya sea de cifrado o descifrado.
+
+NOTA: si desea ver un ejemplo en la carpeta textos_prueba hay 4 documentos de mascara(masQuijote,masQuijote64,masMoby,masMoby64)
+y una imagen de ejemplo(mascara.png)
+

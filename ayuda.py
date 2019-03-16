@@ -35,7 +35,7 @@ def ayudaPrincipal():
 	print ("| Docente:       Siler Amador Donado (samador@unicauca.edu.co)                        |")
 	print ("|         									      |")
 	print ("|                             UNIVERSIDAD DEL CAUCA                                   |")
-	print ("|                   		  Febrero 2019                                        |")
+	print ("|                   		  Marzo 2019                                          |")
 	print (" --------------------------------------------------------------------------------------")
 
 def ayudaVigenere():

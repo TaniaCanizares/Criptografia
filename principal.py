@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: utf8 -*-
+# -*- coding: latin-1 -*-
 import os, sys
 import ayuda
 import validaciones

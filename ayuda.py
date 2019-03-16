@@ -171,7 +171,7 @@ def ayudaMascara():
 	print ("| 										             |")
 	print ("| <archivoEntrada>: Nombre del archivo de entrada a cifrar o descifrar ej: quijote.txt       |")
 	print ("|										             |")
-	print ("| <Mascara>: Corresponde a la Clave. Revisar la documentacion 			             |")
+	print ("| <Mascara>: Corresponde a la Clave. Revisar documento mascara.txt 			     |")
 	print ("|										             |")
 	print ("| Codificación y decodificación (opcional): 	 	                                     |")
 	print ("|\tsintaxis: python3 principal.py -mr <modo> <archivoEntrada> <Mascara> -c64            |")

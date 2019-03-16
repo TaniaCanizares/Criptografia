@@ -90,9 +90,10 @@ def generarCif(matriz,cod):
 	while(i<len(matriz)):
 		j=0
 		while(j<len(matriz)):
-			if(cod==""):
+			if(cod=="" or matriz[i][j]=="$"):
 				cif=cif+matriz[i][j]
-			else:			
+			else:		
+				#print (matriz[i][j])	
 				cif=cif+chr(matriz[i][j])
 			j=j+1
 		i=i+1

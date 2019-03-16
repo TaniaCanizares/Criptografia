@@ -44,7 +44,6 @@ def abrirArchivo64(nombreArchivo):
 	except IOError:
 		return ''
 	else:
-		print (int(arch64[0]),"---",arch64[1],"---",int(arch64[0]+arch64[1]))
 		return arch64
 		
 def obtenerNombreArchivo():

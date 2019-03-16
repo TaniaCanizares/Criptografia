@@ -42,15 +42,6 @@ def cifraVigenere(archEnt,clave,archSal,cod):
 		#try:
 		while(i<lg):	
 			if(j<lk):
-				try:
-					dato= alf[((alf.index(palabra[i])+alf.index(k[j]))%la)]
-				except:
-					flag = -1
-				if(flag==-1):
-					print("El caracter ",palabra[i]," no se encuentra en el alfabeto, revise la ayuda en el menú principal para añadirlo") 
-					break
-				else:
-					c=c+dato
 				if(cod==""):
 					dato= alf[((alf.index(palabra[i])+alf.index(k[j]))%la)]
 				else:
@@ -134,3 +125,5 @@ def imprimirTexto(texto):
 	while(i<200):
 		print (texto[i])
 		i=i+1
+
+#cifraVigenere("textos_prueba/quijote.txt","textos_prueba/clave.txt","textos_prueba/quijote.txt.cif","-c64")

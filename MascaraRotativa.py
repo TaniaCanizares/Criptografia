@@ -67,7 +67,7 @@ def hubicarLetras(matriz,mascara,mensaje,l):
 				if(letra<len(mensaje)):
 					matriz[i][j]=mensaje[letra]
 				else:
-					matriz[i][j]="="
+					matriz[i][j]="$"
 				letra=letra+1
 			j=j+1
 		i=i+1
@@ -83,14 +83,17 @@ def completrar(matriz,mensaje,tam):
 			j=j+1
 		i=i+1	
 
-def generarCif(matriz):
+def generarCif(matriz,cod):
 	i=0
 	j=0
 	cif=""
 	while(i<len(matriz)):
 		j=0
 		while(j<len(matriz)):
-			cif=cif+matriz[i][j]
+			if(cod==""):
+				cif=cif+matriz[i][j]
+			else:			
+				cif=cif+chr(matriz[i][j])
 			j=j+1
 		i=i+1
 	return cif
@@ -162,7 +165,7 @@ def cifradoMR(arch,masc,cod):
 	hubicarLetras(matriz,mascara4,mensaje,l)
 	l=l+numP
 	completrar(matriz,mensaje,numC)
-	cif=generarCif(matriz)
+	cif=generarCif(matriz,cod)
 	sal = arch+".cif"
 	print (sal)
 	fichero = archivo.escribirArchivo(sal, cif)
@@ -196,7 +199,7 @@ def consMensaje(matriz,mascara):
 	while(i<len(mascara)):
 		while(j<len(mascara)):
 			if(mascara[i][j].upper()=="X"):
-				if(matriz[i][j]!="="):
+				if(matriz[i][j]!="$"):
 					men=men+matriz[i][j]
 				else:
 					return men
@@ -205,7 +208,7 @@ def consMensaje(matriz,mascara):
 		i=i+1
 	return men
 
-def descifradoMR(arch,masc, codificacion):
+def descifradoMR(arch,masc,cod):
 	mensaje=""
 	perforaciones=[]
 	f = archivo.abrirArchivo(arch)
@@ -242,7 +245,10 @@ def descifradoMR(arch,masc, codificacion):
 	men=men+consMensaje(matriz,mascara3)
 	men=men+consMensaje(matriz,mascara4)
 	sal = arch.replace("cif","dec")
-	fichero = archivo.escribirArchivo(sal,men)
+	if(cod==""):
+		fichero = archivo.escribirArchivo(sal,men)
+	else:
+		fichero = archivo.escribirArchivo64(sal,men)		
 	if fichero=='':
 		print ('Ocurrio un error al intentar escribir en ', sal)
 	else:
@@ -250,5 +256,3 @@ def descifradoMR(arch,masc, codificacion):
 		print ("\n*********************************************************************")
 		print ("SE GENERO EL ARCHIVO ",sal," CON EL MENSAJE EN CLARO")
 		print ("*********************************************************************\n\n\n")
-
-#cifradoMR("./textos_prueba/quijote.txt","./textos_prueba/masQuijote.txt","-c64")

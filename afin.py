@@ -48,13 +48,13 @@ def descifrarAfin(texto, a, b, nombreArchivoSalida, cod):
 		i+=1
 	if(cod==""):
 		f = archivo.escribirArchivo(nombreArchivoSalida,mensajeClaro)
+		f.close()
 	else:
 		f = archivo.escribirArchivo64(nombreArchivoSalida,mensajeClaro)
 	if f=='':
 		print ('Ocurrio un error al intentar escribir en', nombreArchivoSalida)
 	else:
 		print ('Se guardo correctamente el mensaje descifrado en',nombreArchivoSalida)
-		f.close()
 	sys.stdin.flush()
 	
 

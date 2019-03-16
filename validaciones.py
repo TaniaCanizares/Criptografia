@@ -219,41 +219,23 @@ def validacionAfin(argumentos):
 				print ("Revisar la ayuda del algoritmo de afin: python3 principal.py -sa\n")
 
 def validacionFrecuencia(argumentos):
-	if(len(argumentos)==4):
-		if(argumentos[3]=="-c64"):
-			f = archivo.abrirArchivo(argumentos[2])
-			if f=='':
-				print ('No se encontro el archivo '+argumentos[2])
-			else:
-				texto = ""
-				nomArchivoDec = argumentos[2].replace('.cif', '.dec')
-				for pal in f.readlines():
-					texto=texto+pal
-				f.close()
-				start_time = time()
-				frecuencia.analisisFrecuencia(texto, nomArchivoDec, "-c64")
-				elapsed_time = time() - start_time
-				print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
-		else:
-			print("Si deseas decodificar después de descifrar usa la bandera -c64 en lugar de ",argumentos[3])
+	if(len(argumentos)!=3):
+		print ("\nEl número de parámetros es incorrecto")
+		print ("Revisar la ayuda del algoritmo de criptoanalisis por frecuencia: python3 principal.py -caf\n")
 	else:
-		if(len(argumentos)!=3):
-			print ("\nEl número de parámetros es incorrecto")
-			print ("Revisar la ayuda del algoritmo de criptoanalisis por frecuencia: python3 principal.py -caf\n")
+		f = archivo.abrirArchivo(argumentos[2])
+		if f=='':
+			print ('No se encontro el archivo '+argumentos[2])
 		else:
-			f = archivo.abrirArchivo(argumentos[2])
-			if f=='':
-				print ('No se encontro el archivo '+argumentos[2])
-			else:
-				texto = ""
-				nomArchivoDec = argumentos[2].replace('.cif', '.dec')
-				for pal in f.readlines():
-					texto=texto+pal
-				f.close()
-				start_time = time()
-				frecuencia.analisisFrecuencia(texto, nomArchivoDec,"")
-				elapsed_time = time() - start_time
-				print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
+			texto = ""
+			nomArchivoDec = argumentos[2].replace('.cif', '.dec')
+			for pal in f.readlines():
+				texto=texto+pal
+			f.close()
+			start_time = time()
+			frecuencia.analisisFrecuencia(texto, nomArchivoDec)
+			elapsed_time = time() - start_time
+			print("Tiempo transcurrido: %.10f segundos." % elapsed_time)
 
 def validacionMascara(argumentos):
 	if(len(argumentos)==6):

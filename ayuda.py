@@ -133,12 +133,8 @@ def ayudaFrecuencia():
 	print ("|			  				 		 	          |")
 	print ("| <archivoCifrado>: Nombre del archivo de entrada que desea descifrar ej: quijote.txt.cif |")
 	print ("|										          |")
-	print ("| Decodificación (opcional): 	 	                                                  |")
-	print ("|\tsintaxis: python3 principal.py -caf <archivoCifrado> -c64                         |")
-	print ("|										          |")
 	print ("| Ejemplo:    					 				          |")
 	print ("|\tdescifrar: python3 principal.py -caf quijote.txt.cif                              |")
-	print ("|\tdescifrar decodificando: python3 principal.py -caf quijote.txt.cif -c64           |")
 	print ("|         									          |")
 	print (" -----------------------------------------------------------------------------------------")
 

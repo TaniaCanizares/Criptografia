@@ -6,14 +6,20 @@ import alfabeto
 TAM_ALFABETO = alfabeto.tamAlfabeto()
 abc = alfabeto.getAlfabeto()
 
-def cifrarAfin(texto, a, b, nombreArchivoSalida, codificacion):
+def cifrarAfin(texto, a, b, nombreArchivoSalida, cod):
 	mensajeCifrado = ""
 	flag = 1
 	i = 0
 	while (i < len(texto)):
-		mi = alfabeto.getPosicion(texto[i])
+		if(cod=="-c64"):
+			mi = alfabeto.getPosicion(chr(texto[i]))
+		else:
+			mi = alfabeto.getPosicion(texto[i])
 		if(mi==-1):
-			print("El caracter ",texto[i]," no se encuentra en el alfabeto, revise la ayuda en el menú principal para añadirlo") 
+			if(cod=="-c64"):
+				print("El caracter ",chr(texto[i])," no se encuentra en el alfabeto, revise la ayuda en el menú principal para añadirlo") 
+			else:
+				print("El caracter ",texto[i]," no se encuentra en el alfabeto, revise la ayuda en el menú principal para añadirlo") 
 			flag = -1
 			break
 		else:
@@ -31,7 +37,7 @@ def cifrarAfin(texto, a, b, nombreArchivoSalida, codificacion):
 			f.close()
 	sys.stdin.flush()
 	
-def descifrarAfin(texto, a, b, nombreArchivoSalida, codificacion):
+def descifrarAfin(texto, a, b, nombreArchivoSalida, cod):
 	x = modinv(a,TAM_ALFABETO)
 	mensajeClaro = ""
 	i = 0
@@ -40,12 +46,15 @@ def descifrarAfin(texto, a, b, nombreArchivoSalida, codificacion):
 		modulo = (x*(ci-b))%TAM_ALFABETO
 		mensajeClaro = mensajeClaro + abc[modulo]
 		i+=1
-	f = archivo.escribirArchivo(nombreArchivoSalida, mensajeClaro)
+	if(cod==""):
+		f = archivo.escribirArchivo(nombreArchivoSalida,mensajeClaro)
+		f.close()
+	else:
+		f = archivo.escribirArchivo64(nombreArchivoSalida,mensajeClaro)
 	if f=='':
 		print ('Ocurrio un error al intentar escribir en', nombreArchivoSalida)
 	else:
 		print ('Se guardo correctamente el mensaje descifrado en',nombreArchivoSalida)
-		f.close()
 	sys.stdin.flush()
 	
 

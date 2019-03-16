@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: latin-1 -*-
+# -*- coding: utf8 -*-
 import os, sys
 import archivo
 import alfabeto
@@ -10,29 +10,22 @@ abc = alfabeto.getAlfabeto()
 frecuAlta = ['E','A','S','O', 'I', 'N', 'R', 'D', 'T']
 
 	
-def analisisFrecuencia(criptograma, nomArchivoSalida,codificacion):
-	sys.stdin.flush()
+def analisisFrecuencia(criptograma, nomArchivoSalida):
 	listaFrecu = frecuencias(criptograma)
 	k = verificarHipostesis(listaFrecu)
-	print ('La clave es: ',k)
+	print ('La clave con la que se cifró es: ',k)
 	mensajeClaro = ""
 	i=0
 	while (i < len(criptograma)):
-		if criptograma[i] == '\xc3' or criptograma[i] == '\xc2':
-			caracter = criptograma[i] + criptograma[i + 1]
-			i+=1
-			ci = alfabeto.getPosicion(caracter)
-		else:
-			ci = alfabeto.getPosicion(criptograma[i])
+		ci = alfabeto.getPosicion(criptograma[i])
 		modulo = (ci-k)%TAM_ALFABETO
 		mensajeClaro = mensajeClaro + abc[modulo]
 		i+=1
-	f = archivo.escribirArchivo(nomArchivoSalida, mensajeClaro)
+	f = archivo.escribirArchivo(nomArchivoSalida,mensajeClaro)
 	if f=='':
 		print ('Ocurrio un error al intentar escribir en', nomArchivoSalida)
 	else:
 		print ('El mensaje descifrado se guardo correctamente en',nomArchivoSalida)
-		f.close()
 	#print mensajeClaro
 		
 		

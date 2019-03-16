@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: latin-1 -*-
+# -*- coding: utf8 -*-
 import os, sys
 import archivo
 import alfabeto
@@ -7,50 +7,57 @@ import alfabeto
 TAM_ALFABETO = alfabeto.tamAlfabeto()
 abc = alfabeto.getAlfabeto()
 	
-def cifrarCesar(texto, clave, nombreArchivoSalida, codificacion):
+def cifrarCesar(texto, clave, nombreArchivoSalida, cod):
 	mensajeCifrado = ""
+	flag = 1
 	i = 0
-	#print texto
 	while (i < len(texto)):
-		if texto[i] == '\xc3' or texto[i] == '\xc2':
-			caracter = texto[i] + texto[i + 1]
-			i+=1
-			mi = alfabeto.getPosicion(caracter)
+		if(cod=="-c64"):
+			mi = alfabeto.getPosicion(chr(texto[i]))
 		else:
 			mi = alfabeto.getPosicion(texto[i])
-		modulo = (mi+clave)%TAM_ALFABETO
-		mensajeCifrado = mensajeCifrado + abc[modulo]
-		i+=1			
-	f = archivo.escribirArchivo(nombreArchivoSalida, mensajeCifrado)
-	if f =='':
-		print ('Ocurrio un error al intentar escribir en', nombreArchivoSalida)
+		if(mi==-1):
+			if(cod=="-c64"):
+				print("El caracter ",chr(texto[i])," no se encuentra en el alfabeto, revise la ayuda en el menú principal para añadirlo") 
+			else:
+				print("El caracter ",texto[i]," no se encuentra en el alfabeto, revise la ayuda en el menú principal para añadirlo") 
+			flag = -1
+			break
+		else:
+			modulo = (mi+clave)%TAM_ALFABETO
+			mensajeCifrado = mensajeCifrado + abc[modulo]
+			i+=1
+	if(flag==-1):
+		print("La ejecución se detuvo") 
 	else:
-		print ('El mensaje cifrado se guardo correctamente en',nombreArchivoSalida)
-		f.close()
+		f = archivo.escribirArchivo(nombreArchivoSalida, mensajeCifrado)
+		if f =='':
+			print ('Ocurrio un error al intentar escribir en', nombreArchivoSalida)
+		else:
+			print ('El mensaje cifrado se guardo correctamente en',nombreArchivoSalida)
+			f.close()
 	sys.stdin.flush()
-	#print mensajeCifrado
 
-def descifrarCesar(criptograma, clave, nombreArchivoSalida, codificacion):
+def descifrarCesar(criptograma, clave, nombreArchivoSalida, cod):
 	mensajeClaro = ""
 	i = 0
 	while (i < len(criptograma)):
-		if criptograma[i] == '\xc3' or criptograma[i] == '\xc2':
-			caracter = criptograma[i] + criptograma[i + 1]
-			i+=1
-			ci = alfabeto.getPosicion(caracter)
-		else:
-			ci = alfabeto.getPosicion(criptograma[i])
+		ci = alfabeto.getPosicion(criptograma[i])
 		modulo = (ci-clave)%TAM_ALFABETO
 		mensajeClaro = mensajeClaro + abc[modulo]
 		i+=1
-	f = archivo.escribirArchivo(nombreArchivoSalida, mensajeClaro)
-	if f=='':
+	if(cod==""):
+		f = archivo.escribirArchivo(nombreArchivoSalida,mensajeClaro)
+	else:
+		f = archivo.escribirArchivo64(nombreArchivoSalida,mensajeClaro)
+	if(f==-1):
+		print ('El mensaje no fue codificado antes de cifrar\nLa ejecución se detuvo')
+	elif f=='':
 		print ('Ocurrio un error al intentar escribir en', nombreArchivoSalida)
 	else:
 		print ('El mensaje descifrado se guardo correctamente en',nombreArchivoSalida)
 		f.close()	
 	sys.stdin.flush()
-	#print mensajeClaro
 	
 def obtenerEntero(cla):
 	clave = 0
@@ -65,17 +72,3 @@ def obtenerEntero(cla):
 		else:
 			print ('Ingresa un numero entre 1 y \n', TAM_ALFABETO-1)
 			return -1
-		
-
-def cifrarDescifrar():
-	accion = 0
-	print ('\n1. Cifrar \n2. Descifrar \n3. Regresar')
-	try:
-		accion = int(input('\nIngresa una opcion: '))
-	except NameError:
-		print ("Debes ingresar un numero entre 1 y 3")
-	else:
-		if accion >= 1 and accion <=3:
-			return accion
-		else:
-			print ('Debes ingresar un numero entre 1 y 3')

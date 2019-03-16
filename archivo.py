@@ -13,6 +13,8 @@ def escribirArchivo64(nombreArchivo, texto):
 	try:
 		archDecode=base64.b64decode(texto)
 		archivo = open(nombreArchivo,"w",encoding="ISO-8859-1")
+	except ValueError:
+		return -1
 	except IOError:
 		return ''
 	else:
@@ -44,7 +46,6 @@ def abrirArchivo64(nombreArchivo):
 	except IOError:
 		return ''
 	else:
-		print (int(arch64[0]),"---",arch64[1],"---",int(arch64[0]+arch64[1]))
 		return arch64
 		
 def obtenerNombreArchivo():

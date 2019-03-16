@@ -115,7 +115,6 @@ def descVigenere(archEnt,clave,archSal,cod):
 				m=m+dato
 			i=i+1
 			j=j+1
-		print (m[0],"---",m[1],"----",m[2])
 		n = archSal
 		if(cod==""):
 			fichero = archivo.escribirArchivo(n,m)
